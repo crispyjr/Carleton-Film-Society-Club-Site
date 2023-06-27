@@ -1,22 +1,93 @@
 <script>
-    import { home } from '$lib/assets/home.png';
-
-    let nav = [
-        {name: 'Sign Up', url: '/signup'},
-        {name: 'Gallery', url: '/gallery'},
-        {name: 'ayaya', url: '/', src: home},
-        {name: 'About', url: '/about'},
-        {name: 'Events', url: '/events'},
-    ]
-
+    import logo from '$lib/assets/CFS_logo.png';
 </script>
 
-<div class="flex justify-center mx-auto space-x-4 bg-gray-800 ">
-    {#each nav as link}
-    {#if link.src}
-        <a href={link.url}><img src={link.src} alt={link.name} class="h-6 w-auto"/></a>
-    {:else}
-        <a href={link.url} class="text-white">{link.name}</a>
-    {/if}
-    {/each}
+
+<body>
+
+<div class="NavBar">
+   
+    <a href="/" ><img src={logo} alt="logo" width="160" height="160" style="padding: px;0 position: absolute; " ></a>
+    <div class="parallelogram">
+        <p style="position: absolute; rotate: 270deg; right:-10px; top: 55px; font-size: 30px;">SIGN UP</p>
+    </div>
+    <div class="parallelogram" style="right: -230px; background: black;"></div>
+    <div class="parallelogram" style="right: 94px; background: #fe5959;">
+        <p style="position: absolute; rotate: 270deg; right:-10px; top: 55px; font-size: 30px;">GALLERY</p>
+    </div>
+    <div class="parallelogram" style="right: 260px; background: #fe9797;">
+        <p style="position: absolute; rotate: 270deg; right: 0px; top: 49px; font-size: 30px;">ABOUT</p>
+    </div>
+    <div class="parallelogram" style="right: 419px; background: #ffb4b4;">
+        <a href="/events" style="position: absolute; rotate: 270deg; right: -3px; top: 55px; font-size: 30px;">EVENTS</a>
+    </div>
+    
+
 </div>
+
+
+
+
+
+
+</body>
+
+<style>
+    body{
+        margin: 0;
+        background-color: #322F2E;
+    }
+    .NavBar{
+        position: relative;
+        overflow: hidden;
+        background-color: white;
+        width: 100%;
+        height: 180px;
+        box-shadow: 1px 1px 5px;
+        display: block;
+    }
+    .BarElements{
+        position: relative;
+        font-size:30px;
+        
+        left: 30%;
+        border-style: double;
+        border-color:#322F2E ;
+        
+    }
+.parallelogram {
+  width: 250px;
+  height: 160px;
+  background: #e93333;
+  transform: skew(20deg);
+  rotate: 110deg;
+  position: absolute;
+  right: -65px;
+  bottom: 0;
+  top:10px;
+}
+
+.chunk{
+    width: 100%;
+    height: 600px;
+    background-color: #fe5959;
+}
+.slideshow{
+    width: 50%;
+    height: 350px;
+    left:50px;
+    position: relative;
+    background-color: #fe9797;
+    z-index: -1;
+    top:30px;
+    border-radius: 10px;
+    box-shadow: 1px 4px 4px;
+}
+.events{
+    width:25%;
+    height: 350px;
+    background-color: #fe5959;
+    position: absolute;
+    right: 50px;
+}
+</style>

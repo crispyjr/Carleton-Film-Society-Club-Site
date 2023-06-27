@@ -3,5 +3,5 @@
 	import Navigation from '$lib/Navigation/Navigation.svelte';
   </script>
   
-  <Navigation />
+   <Navigation />
   <slot />
