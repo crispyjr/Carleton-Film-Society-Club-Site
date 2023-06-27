@@ -44,7 +44,7 @@
         width: 100%;
         height: 180px;
         box-shadow: 1px 1px 5px;
-        display: block;
+        
     }
     .BarElements{
         position: relative;
