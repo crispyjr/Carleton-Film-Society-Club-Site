@@ -8,19 +8,19 @@
 <div class="NavBar">
    
     <a href="/" ><img src={logo} alt="logo" width="160" height="160" style="padding: px;0 position: absolute; " ></a>
-    <div class="parallelogram">
+    <a href="https://forms.office.com/r/NkfFJxXmJ0" target="_blank" rel="noopener noreferrer"><div class="parallelogram">
         <p style="position: absolute; rotate: 270deg; right:-10px; top: 55px; font-size: 30px;">SIGN UP</p>
-    </div>
+    </div></a>
     <div class="parallelogram" style="right: -230px; background: black;"></div>
-    <div class="parallelogram" style="right: 94px; background: #fe5959;">
+    <a href="/gallery"><div class="parallelogram" style="right: 94px; background: #fe5959;">
         <p style="position: absolute; rotate: 270deg; right:-10px; top: 55px; font-size: 30px;">GALLERY</p>
-    </div>
-    <div class="parallelogram" style="right: 260px; background: #fe9797;">
+    </div> </a>
+    <a href="/about"><div class="parallelogram" style="right: 260px; background: #fe9797;">
         <p style="position: absolute; rotate: 270deg; right: 0px; top: 49px; font-size: 30px;">ABOUT</p>
-    </div>
-    <div class="parallelogram" style="right: 419px; background: #ffb4b4;">
+    </div></a>
+    <a href="/events"><div class="parallelogram" style="right: 419px; background: #ffb4b4;">
         <a href="/events" style="position: absolute; rotate: 270deg; right: -3px; top: 55px; font-size: 30px;">EVENTS</a>
-    </div>
+    </div></a>
     
 
 </div>
