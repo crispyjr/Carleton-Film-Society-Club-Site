@@ -49,6 +49,14 @@
     top:30px;
     border-radius: 10px;
     box-shadow: 1px 4px 4px;
+    display:flex;
+}
+.part{
+    width:30px;
+    height:50px;
+    background: white;
+    position: absolute;
+    top:10px;
 }
 .events{
     width:25%;
@@ -56,6 +64,13 @@
     background-color: #fe5959;
     position: absolute;
     right: 50px;
+}
+.blob{
+    width:400px;
+    height: 60px;
+    background: black;
+    position: relative;
+    left:30px;
 }
 </style>
 
@@ -81,7 +96,13 @@
 
 </div>
 
-<div class="slideshow">dd</div>
+<div class="slideshow">
+    <div class="part"></div>
+    <div class="part" style="right: 0;"></div>
+    <div class="blob"></div>
+
+
+</div>
 <div class="events"></div>
 
 
