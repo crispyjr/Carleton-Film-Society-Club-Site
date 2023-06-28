@@ -62,7 +62,6 @@
             <div class="memberName">Jarukson Jeevakumar</div>
             <div class="memberEmail"><p style="">jaruksonjeevakumar@cmail.carleton.ca</p></div>
         </div>
-        <div class="memberFlex"></div>
 
     </div>
 </div>
@@ -74,7 +73,6 @@
 <img>
 <style>
     .teamFlex{
-        
         width:100%;
         height:80%;
         position: relative;
@@ -161,7 +159,6 @@
     .teamSection{
         width:100%;
         height:1000px;
-        
         position: relative;
     }
     .square{
