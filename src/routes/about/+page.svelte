@@ -1,5 +1,10 @@
 <script>
-
+    
+    import image1 from '$lib/assets/Jacob_Headshot2.jpg'
+    import image2 from '$lib/assets/Jarukson_Headshot2.jpg'
+    import image3 from '$lib/assets/Kim_Headshot3.jpg'
+    import image4 from '$lib/assets/Mackenzie_Headshot2.jpg'
+    
 </script>
 
 <div class="aboutSection">
@@ -16,7 +21,47 @@
     </div>
 </div>
 <div class="teamSection">
-    <div class="meetBar"></div>
+    <div class="meetBar"> <p class="meetText">MEET THE TEAM</p></div>
+    <div class="teamFlex">
+        <div class="memberFlex">
+            <img class="memberImage" src={image1} alt="lamp">
+            <div class="memberRole"> Events Coordinator</div>
+            <div class="memberName">Mackenzie Charbonneau </div>
+            <div class="memberEmail"><p style="">mackenziecharbonneau@cmail.carleton.ca</p></div>
+        </div>
+        <div class="memberFlex">
+            <img class="memberImage" src={image2} alt="lamp">
+            <div class="memberRole"> Events Coordinator</div>
+            <div class="memberName">Mackenzie Charbonneau </div>
+            <div class="memberEmail"><p style="">mackenziecharbonneau@cmail.carleton.ca</p></div>
+        </div>
+        <div class="memberFlex">
+            <img class="memberImage" src={image3} alt="lamp">
+            <div class="memberRole"> Events Coordinator</div>
+            <div class="memberName">Mackenzie Charbonneau </div>
+            <div class="memberEmail"><p style="">mackenziecharbonneau@cmail.carleton.ca</p></div>
+        </div>
+        <div class="memberFlex">
+            <img class="memberImage" src={image4} alt="lamp">
+            <div class="memberRole"> Events Coordinator</div>
+            <div class="memberName">Mackenzie Charbonneau </div>
+            <div class="memberEmail"><p style="">mackenziecharbonneau@cmail.carleton.ca</p></div>
+        </div>
+        <div class="memberFlex">
+            <img class="memberImage" src={image1} alt="lamp">
+            <div class="memberRole"> Events Coordinator</div>
+            <div class="memberName">Mackenzie Charbonneau </div>
+            <div class="memberEmail"><p style="">mackenziecharbonneau@cmail.carleton.ca</p></div>
+        </div>
+        <div class="memberFlex">
+            <img class="memberImage" src={image1} alt="lamp">
+            <div class="memberRole"> Events Coordinator</div>
+            <div class="memberName">Mackenzie Charbonneau </div>
+            <div class="memberEmail"><p style="">mackenziecharbonneau@cmail.carleton.ca</p></div>
+        </div>
+        <div class="memberFlex"></div>
+
+    </div>
 </div>
 
 
@@ -25,11 +70,79 @@
  
 <img>
 <style>
+    .teamFlex{
+        
+        width:100%;
+        height:80%;
+        position: relative;
+        top:5%;
+        display:flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .memberFlex{
+        width:500px;
+        height:500px;
+        margin: 10px;
+    }
+    .memberImage{
+        width:65%;
+        height:60%;
+        border-radius: 50%;
+        position: relative;
+        left:20%;
+        top:5%;
+    }
+    .memberRole{
+        width:65%;
+        height:10%;
+        position: relative;
+        left:20%;
+        top:30px;
+        text-align: center;
+        font-size: 30px;
+        font-family: 'Times New Roman', Times, serif;
+        color:white;
+    }
+    .memberName{
+        width:65%;
+        height:10%;
+        position: relative;
+        left:20%;
+        top:30px;
+        text-align: center;
+        font-size: 30px;
+        font-family: 'Times New Roman', Times, serif;
+        color:white;
+    }
+    .memberEmail{
+        width:80%;
+        height:10%;
+        
+        position: relative;
+        left:12%;
+        top:30px;
+        text-align: center;
+        font-size: 20px;
+        font-family: 'Times New Roman', Times, serif;
+        text-decoration: underline;
+        color:white;
+    }
     .meetBar{
-        width:40%;
-        height:20px;
+        width:42%;
+        height:70px;
         background: black;
         position: relative;
+        left:28%;
+        color:white;
+        text-align: center;
+        
+    }
+    .meetText{
+        position: relative;
+        top:20%;
+        font-size: 30px;
+        font-family:'Times New Roman', Times, serif
     }
     .title{
         text-align: center;
@@ -38,18 +151,19 @@
     }
     .aboutSection{
         width:100%;
-        height:400px;
+        height:600px;
         position: relative;
+        display: flex;
     }
     .teamSection{
         width:100%;
-        height:400px;
-        background-color: red;
+        height:1000px;
+        
         position: relative;
     }
     .square{
         width: 40%;
-        height: 300px;
+        height: 400px;
         background: rgb(36, 36, 36);
         position: absolute;
         left:28%;
@@ -79,11 +193,12 @@
     .aboutDescSect{
         position: relative;
         width:93%;
-        height:70%;
+        height:80%;
         background: black;
         left:3%;
         top:-7px;
         font-family: 'Times New Roman', Times, serif;
         overflow: hidden;
+        font-size: 25px;
     }
 </style>

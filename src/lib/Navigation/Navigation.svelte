@@ -9,7 +9,7 @@
    
     <a href="/" ><img src={logo} alt="logo" width="160" height="160" style="padding: px;0 position: absolute; " ></a>
     <a href="https://forms.office.com/r/NkfFJxXmJ0" target="_blank" rel="noopener noreferrer"><div class="parallelogram">
-        <p style="position: absolute; rotate: 270deg; right:-3px; top: 55px; font-size: 30px;">SIGN UP</p>
+        <p style="position: absolute; rotate: 270deg; right:-10px; top: 55px; font-size: 30px;">SIGN UP</p>
     </div></a>
     <div class="parallelogram" style="right: -230px; background: black;"></div>
     <a href="/gallery"><div class="parallelogram" style="right: 94px; background: #fe5959;">
@@ -35,7 +35,7 @@
 <style>
     body{
         margin: 0;
-        background-color: #322F2E;
+        background-color: #4b4645;
     }
     .NavBar{
         position: relative;
