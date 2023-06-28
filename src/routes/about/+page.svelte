@@ -1,6 +1,10 @@
 <script>
     
     import image1 from '$lib/assets/Jacob_Headshot2.jpg'
+    import image2 from '$lib/assets/Jarukson_Headshot2.jpg'
+    import image3 from '$lib/assets/Kim_Headshot3.jpg'
+    import image4 from '$lib/assets/Mackenzie_Headshot2.jpg'
+    
 </script>
 
 <div class="aboutSection">
@@ -26,19 +30,19 @@
             <div class="memberEmail"><p style="">mackenziecharbonneau@cmail.carleton.ca</p></div>
         </div>
         <div class="memberFlex">
-            <img class="memberImage" src={image1} alt="lamp">
+            <img class="memberImage" src={image2} alt="lamp">
             <div class="memberRole"> Events Coordinator</div>
             <div class="memberName">Mackenzie Charbonneau </div>
             <div class="memberEmail"><p style="">mackenziecharbonneau@cmail.carleton.ca</p></div>
         </div>
         <div class="memberFlex">
-            <img class="memberImage" src={image1} alt="lamp">
+            <img class="memberImage" src={image3} alt="lamp">
             <div class="memberRole"> Events Coordinator</div>
             <div class="memberName">Mackenzie Charbonneau </div>
             <div class="memberEmail"><p style="">mackenziecharbonneau@cmail.carleton.ca</p></div>
         </div>
         <div class="memberFlex">
-            <img class="memberImage" src={image1} alt="lamp">
+            <img class="memberImage" src={image4} alt="lamp">
             <div class="memberRole"> Events Coordinator</div>
             <div class="memberName">Mackenzie Charbonneau </div>
             <div class="memberEmail"><p style="">mackenziecharbonneau@cmail.carleton.ca</p></div>
