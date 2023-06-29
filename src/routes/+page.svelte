@@ -1,8 +1,20 @@
 <script>
     import { CarouselTransition } from 'flowbite-svelte';
-    let showThumbs=false;
-  let showCaptions=false;
-  let showIndicators=false;
+    import image1 from '$lib/assets/stock1.jpg';
+    import image2 from '$lib/assets/stock2.jpg';
+    import image3 from '$lib/assets/stock3.jpg';
+    import image4 from '$lib/assets/stock4.jpg';
+    import image5 from '$lib/assets/stock5.jpg';
+    let showThumbs=false
+    let showCaptions=false
+    let showIndicators=false
+    const images = [
+      {id: 0, attribution: 'stock1', imgurl: image1},
+      {id: 1, attribution: 'stock2', imgurl: image2},
+      {id: 2, attribution: 'stock3', imgurl: image3},
+      {id: 3, attribution: 'stock4', imgurl: image4},
+      {id: 4, attribution: 'stock5', imgurl: image5}
+    ]
 
 </script>
 

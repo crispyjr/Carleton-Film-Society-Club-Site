@@ -4,6 +4,9 @@
     import image2 from '$lib/assets/Jarukson_Headshot2.jpg'
     import image3 from '$lib/assets/Kim_Headshot3.jpg'
     import image4 from '$lib/assets/Mackenzie_Headshot2.jpg'
+    import image5 from '$lib/assets/Beatrice_Headshot2.jpg'
+    import image6 from '$lib/assets/Will_Headshot2.jpg'
+    
     
 </script>
 
@@ -24,42 +27,41 @@
     <div class="meetBar"> <p class="meetText">MEET THE TEAM</p></div>
     <div class="teamFlex">
         <div class="memberFlex">
+            <img class="memberImage" src={image5} alt="lamp">
+            <div class="memberRole"> President</div>
+            <div class="memberName">Beatrice Villadelgado </div>
+            <div class="memberEmail"><p style="">beatricemarievillade@cmail.carleton.ca</p></div>
+        </div>
+        <div class="memberFlex">
+            <img class="memberImage" src={image6} alt="lamp">
+            <div class="memberRole"> Vice President</div>
+            <div class="memberName">Will Osborne </div>
+            <div class="memberEmail"><p style="">willosborne@cmail.carleton.ca</p></div>
+        </div>
+        <div class="memberFlex">
             <img class="memberImage" src={image1} alt="lamp">
-            <div class="memberRole"> Events Coordinator</div>
+            <div class="memberRole">Financial Officer</div>
+            <div class="memberName">Jacob Livingstone</div>
+            <div class="memberEmail"><p style="">JacobLivingstone@cmail.carleton.ca</p></div>
+        </div>
+        <div class="memberFlex">
+            <img class="memberImage" src={image3} alt="lamp">
+            <div class="memberRole">Marketing Officer</div>
+            <div class="memberName">Kimberly Huang </div>
+            <div class="memberEmail"><p style="">Kimhuang@cmail.carleton.ca </p></div>
+        </div>
+        <div class="memberFlex">
+            <img class="memberImage" src={image4} alt="lamp">
+            <div class="memberRole">Marketing Officer</div>
             <div class="memberName">Mackenzie Charbonneau </div>
             <div class="memberEmail"><p style="">mackenziecharbonneau@cmail.carleton.ca</p></div>
         </div>
         <div class="memberFlex">
             <img class="memberImage" src={image2} alt="lamp">
-            <div class="memberRole"> Events Coordinator</div>
-            <div class="memberName">Mackenzie Charbonneau </div>
-            <div class="memberEmail"><p style="">mackenziecharbonneau@cmail.carleton.ca</p></div>
+            <div class="memberRole">Events Coordinator</div>
+            <div class="memberName">Jarukson Jeevakumar</div>
+            <div class="memberEmail"><p style="">jaruksonjeevakumar@cmail.carleton.ca</p></div>
         </div>
-        <div class="memberFlex">
-            <img class="memberImage" src={image3} alt="lamp">
-            <div class="memberRole"> Events Coordinator</div>
-            <div class="memberName">Mackenzie Charbonneau </div>
-            <div class="memberEmail"><p style="">mackenziecharbonneau@cmail.carleton.ca</p></div>
-        </div>
-        <div class="memberFlex">
-            <img class="memberImage" src={image4} alt="lamp">
-            <div class="memberRole"> Events Coordinator</div>
-            <div class="memberName">Mackenzie Charbonneau </div>
-            <div class="memberEmail"><p style="">mackenziecharbonneau@cmail.carleton.ca</p></div>
-        </div>
-        <div class="memberFlex">
-            <img class="memberImage" src={image1} alt="lamp">
-            <div class="memberRole"> Events Coordinator</div>
-            <div class="memberName">Mackenzie Charbonneau </div>
-            <div class="memberEmail"><p style="">mackenziecharbonneau@cmail.carleton.ca</p></div>
-        </div>
-        <div class="memberFlex">
-            <img class="memberImage" src={image1} alt="lamp">
-            <div class="memberRole"> Events Coordinator</div>
-            <div class="memberName">Mackenzie Charbonneau </div>
-            <div class="memberEmail"><p style="">mackenziecharbonneau@cmail.carleton.ca</p></div>
-        </div>
-        <div class="memberFlex"></div>
 
     </div>
 </div>
@@ -71,7 +73,6 @@
 <img>
 <style>
     .teamFlex{
-        
         width:100%;
         height:80%;
         position: relative;
@@ -158,7 +159,6 @@
     .teamSection{
         width:100%;
         height:1000px;
-        
         position: relative;
     }
     .square{

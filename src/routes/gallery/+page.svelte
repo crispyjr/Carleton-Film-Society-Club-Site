@@ -5,9 +5,9 @@
     import image3 from '$lib/assets/stock3.jpg';
     import image4 from '$lib/assets/stock4.jpg';
     import image5 from '$lib/assets/stock5.jpg';
-    // let showThumbs=false
-    // let showCaptions=false
-    // let showIndicators=false
+    let showThumbs=false
+    let showCaptions=false
+    let showIndicators=false
     const images = [
       {id: 0, alt: 'stock1', src: image1},
       {id: 1, alt: 'stock2', src: image2},
