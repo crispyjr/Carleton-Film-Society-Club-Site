@@ -1,4 +1,4 @@
-<!-- <script>
+<script>
     import Calendar from '@event-calendar/core';
     import TimeGrid from '@event-calendar/time-grid';
 
@@ -19,4 +19,4 @@
 </script>
 
 <button on:click={invokeMethod}>Refetch events</button>
-<Calendar bind:this={ec} {plugins} {options} /> -->
+<Calendar bind:this={ec} {plugins} {options} />
