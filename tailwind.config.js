@@ -4,6 +4,9 @@ export default {
   mode: 'jit',
   theme: {
     extend: {
+      colors: {
+        'custom-grey': '#322F2E',
+      },
       skew: {
         20: '20deg',
      },
