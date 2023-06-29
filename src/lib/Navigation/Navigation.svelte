@@ -1,93 +1,24 @@
 <script>
     import logo from '$lib/assets/CFS_logo.png';
+
+    let nav = [
+        {text: 'Sign-up', inset: 'inset-x-0', right: 'right-5', color: 'bg-red-400', link: ''},
+        {text: 'Gallery', inset: 'inset-x-1', right: 'right-5', color: 'bg-red-500', link: '/gallery'},
+        {text: 'About', inset: 'inset-x-2', right: 'right-5', color: 'bg-red-600', link: '/about'},
+        {text: 'Events', inset: 'inset-x-2', right: 'right-5', color: 'bg-red-700', link: '/events'},
+    ];
 </script>
 
 
-<body>
-
-<div class="NavBar">
-   
-    <a href="/" ><img src={logo} alt="logo" width="160" height="160" style="padding: px;0 position: absolute; " ></a>
-    <a href="https://forms.office.com/r/NkfFJxXmJ0" target="_blank" rel="noopener noreferrer"><div class="parallelogram">
-        <p style="position: absolute; rotate: 270deg; right:-10px; top: 55px; font-size: 30px;">SIGN UP</p>
-    </div></a>
-    <div class="parallelogram" style="right: -230px; background: black;"></div>
-    <a href="/gallery"><div class="parallelogram" style="right: 94px; background: #fe5959;">
-        <p style="position: absolute; rotate: 270deg; right:-10px; top: 55px; font-size: 30px;">GALLERY</p>
-    </div> </a>
-    <a href="/about"><div class="parallelogram" style="right: 260px; background: #fe9797;">
-        <p style="position: absolute; rotate: 270deg; right: 0px; top: 49px; font-size: 30px;">ABOUT</p>
-    </div></a>
-    <a href="/events"><div class="parallelogram" style="right: 419px; background: #ffb4b4;">
-        <a href="/events" style="position: absolute; rotate: 270deg; right: -3px; top: 55px; font-size: 30px;">EVENTS</a>
-    </div></a>
-    
-
+<div class="w-full h-52 bg-gray-700 flex justify-between items-center px-8">
+    <img src={logo} alt="logo" class="h-52 w-auto">
+        <div class="flex -space-x-12">
+        {#each nav as n}
+        <a href={n.link}>
+            <div class="w-52 h-36 skew-x-20 {n.color} rotate-110">
+                <p class="absolute right-0 {n.inset} {n.right} transform translate-x-1/2 rotate-270 text-2xl text-white">{n.text}</p>
+            </div>
+        </a>
+        {/each}
+    </div>
 </div>
-
-
-
-
-
-
-</body>
-
-<style>
-    body{
-        margin: 0;
-        background-color: #4b4645;
-    }
-    .NavBar{
-        position: relative;
-        overflow: hidden;
-        background-color: white;
-        width: 100%;
-        height: 180px;
-        box-shadow: 1px 1px 5px;
-        
-    }
-    .BarElements{
-        position: relative;
-        font-size:30px;
-        
-        left: 30%;
-        border-style: double;
-        border-color:#322F2E ;
-        
-    }
-.parallelogram {
-  width: 250px;
-  height: 160px;
-  background: #e93333;
-  transform: skew(20deg);
-  rotate: 110deg;
-  position: absolute;
-  right: -65px;
-  bottom: 0;
-  top:10px;
-}
-
-.chunk{
-    width: 100%;
-    height: 600px;
-    background-color: #fe5959;
-}
-.slideshow{
-    width: 50%;
-    height: 350px;
-    left:50px;
-    position: relative;
-    background-color: #fe9797;
-    z-index: -1;
-    top:30px;
-    border-radius: 10px;
-    box-shadow: 1px 4px 4px;
-}
-.events{
-    width:25%;
-    height: 350px;
-    background-color: #fe5959;
-    position: absolute;
-    right: 50px;
-}
-</style>
