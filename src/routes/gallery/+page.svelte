@@ -12,9 +12,9 @@
       {id: 4, alt: 'stock5', src: image5}
     ]
   </script>
-<div class="flex items-center justify-center min-h-screen bg-gray-200">
-  <div class="bg-white shadow-lg rounded-lg px-5 py-5 md:w-3/4 w-full">
-      <h1 class="flex justify-center items-center font-light text-4xl pb-2">Gallery</h1>
+<div class="flex items-center justify-center min-h-screen bg-zinc-800">
+  <div class="bg-zinc-600 shadow-lg rounded-lg px-5 py-5 md:w-3/4 w-full">
+      <h1 class="flex justify-center items-center font-light text-4xl pb-2 text-white drop-shadow-2xl">Gallery</h1>
       <div class="grid grid-cols-3 grid-rows-2 gap-4">
           {#each images as item (item.id)}
             <div class="ring-4 ring-red-600 dark:ring-red-400 p-1">

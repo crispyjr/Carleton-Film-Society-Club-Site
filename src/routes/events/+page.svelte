@@ -18,5 +18,8 @@
     }
 </script>
 
-<button on:click={invokeMethod}>Refetch events</button>
-<Calendar bind:this={ec} {plugins} {options} />
+
+<div class="bg-zinc-800 text-white">
+    <button on:click={invokeMethod}>Refetch events</button>
+    <Calendar bind:this={ec} {plugins} {options} />
+</div>
