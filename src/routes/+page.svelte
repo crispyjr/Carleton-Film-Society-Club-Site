@@ -1,5 +1,6 @@
 <script>
     import Card from '$lib/Card/Card.svelte';
+    import Slideshow from '$lib/Slideshow/Slideshow.svelte';
     import image1 from '$lib/assets/stock1.jpg';
     import image2 from '$lib/assets/stock2.jpg';
     import image3 from '$lib/assets/stock3.jpg';
@@ -19,14 +20,12 @@
 </script>
 
 <div class="flex flex-col w-full h-screen">
-    <div class="w-screen h-4/5 flex space-x-4 bg-black">
-        <div class="flex-none w-1/6"></div>
-        
-        <div class="flex-grow flex items-center justify-center max-w-4xl">
-            
-            <!-- <CarouselTransition {images} loop {showThumbs} {showCaptions} {showIndicators} transitionType="fly" transitionParams="{{delay: 250, duration: 300, x: 100}}"/> -->
+    <div class="w-screen h-1/2 flex items-center justify-center space-x-4 bg-black">
+        <div class="w-1/12"></div>
+        <div class="w-1/2">
+            <Slideshow />
         </div>
-        <div class="flex-none w-1/6"></div>
+        <div class="w-1/12"></div>
     </div>
     <div class="flex justify-around items-center w-screen bg-custom-grey h-3/4">
         <Card />
