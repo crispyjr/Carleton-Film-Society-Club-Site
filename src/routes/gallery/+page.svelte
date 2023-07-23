@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
     import image1 from '$lib/assets/stock1.jpg';
     import image2 from '$lib/assets/stock2.jpg';
     import image3 from '$lib/assets/stock3.jpg';
@@ -23,5 +23,5 @@
           {/each}
       </div>
   </div>
-</div>
+</div> -->
 
