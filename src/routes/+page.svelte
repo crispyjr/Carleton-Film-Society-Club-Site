@@ -38,6 +38,7 @@
   }, 10000)
 </script>
 
+<link href='https://fonts.googleapis.com/css?family=Koulen' rel='stylesheet'>
 <div class="slideshow">
     {#each images as {id, imgurl}}
         <img class="slideshowImage fade" class:showImage={id == imageShowIndex} src={imgurl} alt="oop">
@@ -56,8 +57,15 @@
 
 
 </div>
-<div class="eventsBar">
-    <div></div>
+<div class="events">
+    <div class="upcomingEventsBar text">UPCOMING EVENTS</div>
+    <div class="showEventsListBar">
+        <span class="eventBox"></span>
+        <span class="eventBox"></span>
+        <span class="eventBox"></span>
+        <span class="eventBox"></span>
+    </div>
+    <div class="seeMoreBar">SEE MORE</div>
 
 </div>
 
@@ -77,8 +85,7 @@
     }
     .showImage{
         display: block;
-    }
-    
+    }  
     .rightArrow,
     .leftArrow{
         width:3%;
@@ -134,9 +141,56 @@
     to{opacity:1}
 }
 /* UPCOMING EVENTS */
-.eventsBar{
+.events{
         width:100%;
-        height:500px;
+        height:700px;
         position: relative;
+        background: black;
     }
+
+.upcomingEventsBar{
+    width:100%;
+    height:20%;
+    background: black;
+    position: relative;
+    color:white;
+    font-size: 80px;
+    display: flex;
+    align-items: center;  
+    font-family: 'Koulen';
+}
+.text{
+    padding-left: 20px;
+}
+.showEventsListBar{
+    width:100%;
+    height:500px;
+    display: flex;
+    position: relative;
+    justify-content: space-around;
+    align-items: center;
+}
+.eventBox{
+    width:22%;
+    height:90%;
+    background: white;
+
+}
+.seeMoreBar{
+    width:7%;
+    height:10%;
+    background: black;
+    position: absolute;
+    right:0;
+    bottom: 0;
+    display: flex;
+    justify-content: space-around;
+    font-size: 30px;
+    font-family: 'Koulen';
+    text-decoration: underline;
+    color:white;
+}
+
+
+
 </style>
