@@ -46,6 +46,7 @@
         justify-content: space-between;
         position: fixed;
         backdrop-filter: blur(10px);
+        z-index: 1;
         /* filter: blur(8px);
         -webkit-filter: blur(8px); */
     

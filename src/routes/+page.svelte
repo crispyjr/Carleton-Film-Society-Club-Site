@@ -6,7 +6,6 @@
     $: console.log(imageShowIndex)
 
     const prevSlide = () => {
-        console.log("bruh")
         if(imageShowIndex==0){
             imageShowIndex = images.length-1;
         }
@@ -23,35 +22,52 @@
             imageShowIndex+=1;
         }
     }
+
+    const slide1 = () => {
+        imageShowIndex=0;
+    }
+    const slide2 = () => {
+        imageShowIndex=1;
+    }
+    const slide3 = () => {
+        imageShowIndex=2;
+    }
+
+    setInterval(() => {
+    nextSlide()
+  }, 10000)
 </script>
 
 <div class="slideshow">
     {#each images as {id, imgurl}}
-        <img class="slideshowImage" class:showImage={id == imageShowIndex} src={imgurl} alt="oop">
+        <img class="slideshowImage fade" class:showImage={id == imageShowIndex} src={imgurl} alt="oop">
     {/each}
 
-    <button class="leftArrow" on:click={prevSlide} on:keydown={prevSlide} >&#10094</button>
-    <button class="rightArrow" on:click={nextSlide} on:keydown={nextSlide}>&#10095</button>
+    <span  class="leftArrow" on:click={prevSlide}>&#10094</span>
+    <span  class="rightArrow" on:click={nextSlide}>&#10095</span>
     <div class="dotBar">
         <div class="dotdotBar">
             
-            <div class="dotBox">•</div>
-            <div class="dotBox">•</div>
-            <div class="dotBox">•</div>
+            <div class="dotBox" on:click={slide1}>•</div>
+            <div class="dotBox" on:click={slide2}>•</div>
+            <div class="dotBox" on:click={slide3}>•</div>
         </div>
     </div>
 
 
 </div>
-<div class="eventsBar"></div>
+<div class="eventsBar">
+    <div></div>
+
+</div>
 
 <style>
+    /* SLIDESHOW */
     .slideshow{
         width:100%;
         height:700px;
-        background: green;
+        background: black;
         position: relative;
-        z-index: -1;
         border-style: dashed;
     }
     .slideshowImage{
@@ -62,33 +78,23 @@
     .showImage{
         display: block;
     }
-    .eventsBar{
-        width:100%;
-        height:500px;
-        position: relative;
-    }
+    
+    .rightArrow,
     .leftArrow{
         width:3%;
         height:14%;
-        background: red;
+        backdrop-filter: blur(10px);
+        color:white;
         position: absolute;
         top:50%;
         display: flex;
         justify-content: center;
         align-items: center;  
         font-size: 30px;
+        cursor: pointer;
     }
     .rightArrow{
-        width:3%;
-        height:14%;
-        background: red;
-        position: absolute;
-        top:50%;
         right:0;
-        display: flex;
-        justify-content: center;
-        align-items: center;  
-        font-size: 30px;
     }
     .dotBar{
         width:100%;
@@ -110,6 +116,27 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 40px;  
+        font-size: 40px;
+        cursor: pointer;  
+    }
+    .fade{
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 2s;
+    animation-name: fade;
+    animation-duration: 2s;
+}
+@-webkit-keyframes fade{
+    from {opacity: .3}
+    to {opacity: 1}
+}
+@keyframes fade{
+    from {opacity:.3}
+    to{opacity:1}
+}
+/* UPCOMING EVENTS */
+.eventsBar{
+        width:100%;
+        height:500px;
+        position: relative;
     }
 </style>
