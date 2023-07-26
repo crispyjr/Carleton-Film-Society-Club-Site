@@ -1,6 +1,8 @@
 <script>
   import image1 from '$lib/assets/stock2.jpg';
    import { images } from './imageData.js';
+   import { icons } from './imageData.js';
+   import image7 from '$lib/assets/youtube.png';
   
     let imageShowIndex = 0;
     $: console.log(imageShowIndex)
@@ -67,6 +69,16 @@
     </div>
     <div class="seeMoreBar">SEE MORE</div>
 
+</div>
+
+<div class="footer">
+    <div class="iconsBar">
+        {#each icons as {id,imgurl}}
+        <div class="iconDots">
+            <img class="iconImage" src={imgurl}>
+        </div>
+        {/each}
+    </div>
 </div>
 
 <style>
@@ -189,6 +201,37 @@
     font-family: 'Koulen';
     text-decoration: underline;
     color:white;
+}
+
+/* FOOTER  */
+.footer{
+    width:100%;
+    height:200px;
+    background: black;
+    position: relative;
+}
+.iconsBar{
+    width:20%;
+    height:100px;
+    display:flex;
+    position: absolute;
+    right:0;
+    bottom:0;
+    justify-content: space-around;
+    align-items: center;
+}
+.iconDots{
+    height: 75px;
+  width: 75px;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.iconImage{
+    height:50px;
+    width:50px;
 }
 
 
