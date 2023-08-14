@@ -2,7 +2,7 @@
   import image1 from '$lib/assets/stock2.jpg';
    import { images } from './imageData.js';
    import { icons } from './imageData.js';
-   import image7 from '$lib/assets/youtube.png';
+   import image7 from '$lib/assets/event_template.png';
   
     let imageShowIndex = 0;
     $: console.log(imageShowIndex)
@@ -62,10 +62,50 @@
 <div class="events">
     <div class="upcomingEventsBar text">UPCOMING EVENTS</div>
     <div class="showEventsListBar">
-        <span class="eventBox"></span>
-        <span class="eventBox"></span>
-        <span class="eventBox"></span>
-        <span class="eventBox"></span>
+        <span class="eventBox">
+            <img src={image7} alt="" class="eventBoxImg">
+            <div class="eventBoxTextBarTop">
+                <p>Kung Fu Panda</p>
+                <p>Screening</p>
+            </div>
+            <div class="eventBoxTextBarBottom">
+                <p>NICOL BUILDING ROOM 210</p>
+                <p> 4:00PM - 7:00PM</p>
+            </div>
+        </span>
+        <span class="eventBox">
+            <img src={image7} alt="" class="eventBoxImg">
+            <div class="eventBoxTextBarTop">
+                <p>Kung Fu Panda</p>
+                <p>Screening</p>
+            </div>
+            <div class="eventBoxTextBarBottom">
+                <p>NICOL BUILDING ROOM 210</p>
+                <p> 4:00PM - 7:00PM</p>
+            </div>
+        </span>
+        <span class="eventBox">
+            <img src={image7} alt="" class="eventBoxImg">
+            <div class="eventBoxTextBarTop">
+                <p>Kung Fu Panda</p>
+                <p>Screening</p>
+            </div>
+            <div class="eventBoxTextBarBottom">
+                <p>NICOL BUILDING ROOM 210</p>
+                <p> 4:00PM - 7:00PM</p>
+            </div>
+        </span>
+        <span class="eventBox">
+            <img src={image7} alt="" class="eventBoxImg">
+            <div class="eventBoxTextBarTop">
+                <p>Kung Fu Panda</p>
+                <p>Screening</p>
+            </div>
+            <div class="eventBoxTextBarBottom">
+                <p>NICOL BUILDING ROOM 210</p>
+                <p> 4:00PM - 7:00PM</p>
+            </div>
+        </span>
     </div>
     <div class="seeMoreBar">SEE MORE</div>
 
@@ -181,15 +221,10 @@
     position: relative;
     justify-content: space-around;
     align-items: center;
-}
-.eventBox{
-    width:22%;
-    height:90%;
-    background: white;
-
+    
 }
 .seeMoreBar{
-    width:7%;
+    width:150px;
     height:10%;
     background: black;
     position: absolute;
@@ -203,6 +238,43 @@
     color:white;
 }
 
+/* EVENT BOX */ 
+.eventBox{
+    width:22%;
+    height:90%;
+    background: white;
+    position: relative;
+}
+.eventBoxImg{
+    width:100%;
+    height:100%;
+    position: absolute;
+    filter: blur(8px);
+  -webkit-filter: blur(8px)
+}
+.eventBoxTextBarTop, .eventBoxTextBarBottom{
+    width:100%;
+    position: absolute;
+    text-align: center;
+    font-family: 'Koulen';
+    
+    color:white;
+}
+.eventBoxTextBarTop{
+    top:20%;
+    font-size: 40px;
+    height: 100px;
+ 
+}
+.eventBoxTextBarBottom{
+    bottom: 0;
+    font-size: 30px;
+    line-height: 1;
+    height:70px;
+
+}
+
+
 /* FOOTER  */
 .footer{
     width:100%;
@@ -211,7 +283,7 @@
     position: relative;
 }
 .iconsBar{
-    width:20%;
+    width:250px;
     height:100px;
     display:flex;
     position: absolute;
@@ -221,8 +293,8 @@
     align-items: center;
 }
 .iconDots{
-    height: 75px;
-  width: 75px;
+  height: 50px;
+  width: 50px;
   background-color: white;
   border-radius: 50%;
   display: flex;
@@ -230,8 +302,8 @@
   align-items: center;
 }
 .iconImage{
-    height:50px;
-    width:50px;
+    height:50%;
+    width:50%;
 }
 
 
