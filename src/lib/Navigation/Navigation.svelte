@@ -1,77 +1,141 @@
 <script>
-    // import logo from '$lib/assets/CFS_logo.png';
+	// import logo from '$lib/assets/CFS_logo.png';
+	import icon from '$lib/assets/raven3.png';
 
-    // let nav = [
-    //     {text: 'Sign-up', inset: 'inset-x-0', right: 'right-5', color: 'bg-red-400', link: 'https://forms.office.com/r/NkfFJxXmJ0'},
-    //     {text: 'Gallery', inset: 'inset-x-1', right: 'right-5', color: 'bg-red-500', link: '/gallery'},
-    //     {text: 'About', inset: 'inset-x-2', right: 'right-5', color: 'bg-red-600', link: '/about'},
-    //     {text: 'Events', inset: 'inset-x-2', right: 'right-5', color: 'bg-red-700', link: '/events'},
-    // ];
+
+
+    let isActive = false;
+
+    function toggleMenu() {
+        isActive = !isActive;
+        console.log(isActive)
+    }
 </script>
 
-
-<!-- <div class="w-full h-52 bg-zinc-900 flex justify-between items-center px-8"> -->
-    <!-- <a href="/">
-    <img src={logo} alt="logo" class="h-52 w-auto">
-    </a>
-        <div class="flex -space-x-12">
-        {#each nav as n}
-        <a href={n.link}>
-            <div class="w-52 h-36 skew-x-20 {n.color} rotate-110">
-                <p class="absolute right-0 {n.inset} {n.right} transform translate-x-1/2 rotate-270 text-2xl text-white">{n.text}</p>
-            </div>
-        </a>
-        {/each}
-    </div> -->
-<!-- </div> -->
-<link href='https://fonts.googleapis.com/css?family=Koulen' rel='stylesheet'>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link href="https://fonts.googleapis.com/css?family=Koulen" rel="stylesheet" />
 <div class="navBar">
-    <div class="navIcon"></div>
-    <div class="navTextBar">
-        <div class="navTextBarBox">events</div>
-        <div class="navTextBarBox">about</div>
-        <div class="navTextBarBox">gallery</div>
-        <div class="navTextBarBox">Sign-up</div>
+	<div class="navIconL">
+		<img class="navIconImg" src={icon} style="" />
+	</div>
+	<div class="navTextBar">
+		<div class="navTextBarBox">events</div>
+		<div class="navTextBarBox">about</div>
+		<div class="navTextBarBox">gallery</div>
+		<div class="navTextBarBox">Sign-up</div>
+	</div>
+	<div class="navIconR">
+        <div class="menu" on:click={toggleMenu}>
+            {#if !isActive}
+            <div class={'bar1'}></div>
+            <div class={'bar2'}></div>
+            <div class={'bar3'}></div>
+            {:else}
+            <div class={'bar1 change'}></div>
+            <div class={'bar2 change'}></div>
+            <div class={'bar3 change'}></div>
+            {/if}
+          </div>
+	
     </div>
-    <div class="navIcon"></div>
+	
 </div>
 
 <style>
-    
-    .navBar{
-        width:100%;
-        color: white;
-        display: flex;
-        
-        justify-content: space-between;
-        position: fixed;
-        backdrop-filter: blur(10px);
-        z-index: 1;
-        /* filter: blur(8px);
+	/*MENU*/
+	.menu {
+		width: 75px;
+		height: 75px;
+		margin: 10px 15px;
+		display: inline-block;
+		cursor: pointer;
+	}
+	.bar1,
+	.bar2,
+	.bar3 {
+		width: 50px;
+		height: 5px;
+		background-color: #333;
+		margin: 10px 0;
+		transition: 0.4s;
+	}
+
+    .bar1{
+        margin: 20px 0 auto;
+    }
+
+	.bar1.change{
+		transform: translate(0, 15px) rotate(-45deg); 
+	}
+	.bar2.change{
+		opacity: 0;
+	}
+	.bar3.change{
+		transform: translate(0, -15px) rotate(45deg);
+
+	}
+
+
+
+	.navBar {
+		width: 100%;
+		color: white;
+		display: flex;
+
+		justify-content: space-between;
+		position: fixed;
+		backdrop-filter: blur(10px);
+		z-index: 1;
+		/* filter: blur(8px);
         -webkit-filter: blur(8px); */
-    
-        
-    }
-    .navIcon{
-        width:7%;
-        height:100px;
-        
-    }
-    .navTextBar{
-        width:50%;
-        height:100px;
-        display: flex;
-        justify-content: space-around;
-    }
-    .navTextBarBox{
-        width:20%;
-        height:100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 35px;
-        font-family: 'Koulen';
-        z-index: 2;
-    }
-    
+	}
+	.navIconL,
+	.navIconR {
+		width: 261px;
+		height: 100px;
+		position: relative;
+	}
+	.navIconImg {
+		width: 95%;
+		height: 95%;
+		margin: auto;
+		padding-left: 10px;
+		padding-top: 2px;
+	}
+	.navTextBar {
+		width: 50%;
+		height: 100px;
+		display: flex;
+		justify-content: space-around;
+	}
+	.navTextBarBox {
+		width: 20%;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 35px;
+		font-family: 'Koulen';
+		z-index: 2;
+	}
+
+	/**SCREEN WIDTH*/
+	@media only screen and (min-width: 601px) and (max-width: 1050px) {
+		.navTextBarBox {
+			font-size: 20px;
+			width: 80%;
+		}
+		.navIconR {
+			display: none;
+		}
+	}
+	@media only screen and (max-width: 600px) {
+		.navTextBar,
+		.navTextBarBox {
+			display: none;
+		}
+		.navIconR {
+			width: 100px;
+		}
+	}
 </style>

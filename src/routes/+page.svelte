@@ -62,7 +62,7 @@
 <div class="events">
     <div class="upcomingEventsBar text">UPCOMING EVENTS</div>
     <div class="showEventsListBar">
-        <span class="eventBox">
+        <div class="eventBox">
             <img src={image7} alt="" class="eventBoxImg">
             <div class="eventBoxTextBarTop">
                 <p>Kung Fu Panda</p>
@@ -72,8 +72,8 @@
                 <p>NICOL BUILDING ROOM 210</p>
                 <p> 4:00PM - 7:00PM</p>
             </div>
-        </span>
-        <span class="eventBox">
+        </div>
+        <div class="eventBox">
             <img src={image7} alt="" class="eventBoxImg">
             <div class="eventBoxTextBarTop">
                 <p>Kung Fu Panda</p>
@@ -83,8 +83,8 @@
                 <p>NICOL BUILDING ROOM 210</p>
                 <p> 4:00PM - 7:00PM</p>
             </div>
-        </span>
-        <span class="eventBox">
+        </div>
+        <div class="eventBox">
             <img src={image7} alt="" class="eventBoxImg">
             <div class="eventBoxTextBarTop">
                 <p>Kung Fu Panda</p>
@@ -94,8 +94,8 @@
                 <p>NICOL BUILDING ROOM 210</p>
                 <p> 4:00PM - 7:00PM</p>
             </div>
-        </span>
-        <span class="eventBox">
+        </div>
+        <div class="eventBox">
             <img src={image7} alt="" class="eventBoxImg">
             <div class="eventBoxTextBarTop">
                 <p>Kung Fu Panda</p>
@@ -105,7 +105,12 @@
                 <p>NICOL BUILDING ROOM 210</p>
                 <p> 4:00PM - 7:00PM</p>
             </div>
-        </span>
+        </div>
+        
+        
+
+        
+       
     </div>
     <div class="seeMoreBar">SEE MORE</div>
 
@@ -217,11 +222,24 @@
 .showEventsListBar{
     width:100%;
     height:500px;
-    display: flex;
     position: relative;
-    justify-content: space-around;
+    /* justify-content: space-around;
     align-items: center;
-    
+    flex: 1; */
+    overflow-x: auto;
+    white-space: nowrap;
+}
+.showEventsListBar::-webkit-scrollbar{
+    width:10px;
+}
+.showEventsListBar::-webkit-scrollbar-track{
+    background: rgb(0, 0, 0);
+}
+.showEventsListBar::-webkit-scrollbar-thumb{
+    background: rgb(121, 121, 121);
+}
+.showEventsListBar::-webkit-scrollbar-thumb:hover{
+    background: rgb(63, 63, 63);
 }
 .seeMoreBar{
     width:150px;
@@ -240,10 +258,12 @@
 
 /* EVENT BOX */ 
 .eventBox{
-    width:22%;
-    height:90%;
+    width:422px;
+    height:450px;
     background: white;
-    position: relative;
+    position:relative;
+    display: inline-block;
+    margin:10px 0px 10px 30px;
 }
 .eventBoxImg{
     width:100%;
