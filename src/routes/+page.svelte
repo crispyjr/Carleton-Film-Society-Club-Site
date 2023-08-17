@@ -124,6 +124,7 @@
         </div>
         {/each}
     </div>
+    <div class="copyRightBar">© 2023 Carleton Film Society</div>
 </div>
 
 <style>
@@ -145,7 +146,7 @@
     }  
     .rightArrow,
     .leftArrow{
-        width:3%;
+        width:57px;
         height:14%;
         backdrop-filter: blur(10px);
         color:white;
@@ -169,10 +170,11 @@
         justify-content: center;
     }
     .dotdotBar{
-        width:5%;
+        width:96px; /**5%*/
         height:100%;
         display: flex;
         justify-content: space-around;
+        padding-bottom: 10px;
     }
     .dotBox{
         width:30%;
@@ -247,7 +249,7 @@
     background: black;
     position: absolute;
     right:0;
-    bottom: 0;
+    bottom: -20px;
     display: flex;
     justify-content: space-around;
     font-size: 30px;
@@ -298,13 +300,14 @@
 /* FOOTER  */
 .footer{
     width:100%;
-    height:200px;
+    height:100px;
     background: black;
     position: relative;
+    
 }
 .iconsBar{
     width:250px;
-    height:100px;
+    height:70px;
     display:flex;
     position: absolute;
     right:0;
@@ -325,7 +328,34 @@
     height:50%;
     width:50%;
 }
+.copyRightBar{
+    width:400px;
+    height:50px;
+    color:white;
+    position: absolute;
+    bottom: 0;
+    font-family: 'Koulen';
+    font-size: 30px;
+    padding-left: 10px;
+}
 
+/*MEDIA */
+    
+    @media only screen and (max-width: 900px) {
+		.slideshow{
+            height:400px;
+            }
+        .upcomingEventsBar{
+            font-size: 70px;
+        }
+	}
+    
+    @media only screen and (max-width: 650px) {
+        .copyRightBar{
+            font-size: 15px;
+            height:25px;
+        }
+	}
 
 
 </style>
