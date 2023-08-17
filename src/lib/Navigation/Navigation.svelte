@@ -88,10 +88,10 @@
 		padding-top: 2px;
 	}
 	.navTextBar {
-		width: 40%;
+		width: 35%;
 		height: 100px;
 		display: flex;
-		justify-content: space-between;
+		justify-content: space-around;
 	}
 	.navTextBarBox {
 		width: 20%;
@@ -99,20 +99,20 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		font-size: 35px;
+		font-size: 30px;
 		font-family: 'Koulen';
 		z-index: 2;
 	}
 
 	/**SCREEN WIDTH*/
-	@media only screen and (min-width: 1250px) {
+	/* @media only screen and (min-width: 1500px) {
 		.navTextBarBox {
-			font-size: 30px;
-			/* width: 80%; */
+			font-size: 35px;
+			/* width: 80%; 
 		}
 		
-	}
-	@media only screen and (max-width: 1249px) {
+	} */
+	@media only screen and (max-width: 1250px) {
 		.navTextBar,
 		.navTextBarBox {
 			display: none;
