@@ -1,7 +1,8 @@
 <script>
 	// import logo from '$lib/assets/CFS_logo.png';
 	import icon from '$lib/assets/raven3.png';
-
+	import { Hamburger } from 'svelte-hamburgers';
+	import Menu from './menu.svelte';
 
 
     let isActive = false;
@@ -10,6 +11,7 @@
         isActive = !isActive;
         console.log(isActive)
     }
+	let open;
 </script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -25,18 +27,8 @@
 		<div class="navTextBarBox">Sign-up</div>
 	</div>
 	<div class="navIconR">
-        <div class="menu" on:click={toggleMenu}>
-            {#if !isActive}
-            <div class={'bar1'}></div>
-            <div class={'bar2'}></div>
-            <div class={'bar3'}></div>
-            {:else}
-            <div class={'bar1 change'}></div>
-            <div class={'bar2 change'}></div>
-            <div class={'bar3 change'}></div>
-            {/if}
-          </div>
-	
+        <Hamburger bind:open color="white" />
+		<Menu bind:open />
     </div>
 	
 </div>
