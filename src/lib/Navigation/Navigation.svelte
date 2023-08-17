@@ -27,7 +27,12 @@
 		<div class="navTextBarBox">Sign-up</div>
 	</div>
 	<div class="navIconR">
-        <Hamburger bind:open color="white" />
+		<div class="ham">
+			<Hamburger bind:open --color="black"/>
+			
+		</div>
+        <!-- <Hamburger bind:open --color="white" /> -->
+		<div class="blockM"></div>
 		<Menu bind:open />
     </div>
 	
@@ -35,37 +40,21 @@
 
 <style>
 	/*MENU*/
-	.menu {
+	.ham{
+		position:absolute;
 		width: 75px;
-		height: 75px;
-		margin: 10px 15px;
-		display: inline-block;
-		cursor: pointer;
+		height:80px;
+		right: 0;
+		bottom:0;
+		display: none;
 	}
-	.bar1,
-	.bar2,
-	.bar3 {
-		width: 50px;
-		height: 5px;
-		background-color: #333;
-		margin: 10px 0;
-		transition: 0.4s;
+	.blockM{
+		position:relative;
+		width:100px;
+		height:100px;
+		
 	}
-
-    .bar1{
-        margin: 20px 0 auto;
-    }
-
-	.bar1.change{
-		transform: translate(0, 15px) rotate(-45deg); 
-	}
-	.bar2.change{
-		opacity: 0;
-	}
-	.bar3.change{
-		transform: translate(0, -15px) rotate(45deg);
-
-	}
+	
 
 
 
@@ -86,6 +75,10 @@
 		width: 261px;
 		height: 100px;
 		position: relative;
+		
+	}
+	.navIconR{
+		display:none;
 	}
 	.navIconImg {
 		width: 95%;
@@ -95,10 +88,10 @@
 		padding-top: 2px;
 	}
 	.navTextBar {
-		width: 50%;
+		width: 40%;
 		height: 100px;
 		display: flex;
-		justify-content: space-around;
+		justify-content: space-between;
 	}
 	.navTextBarBox {
 		width: 20%;
@@ -112,22 +105,26 @@
 	}
 
 	/**SCREEN WIDTH*/
-	@media only screen and (min-width: 601px) and (max-width: 1050px) {
+	@media only screen and (min-width: 1250px) {
 		.navTextBarBox {
-			font-size: 20px;
-			width: 80%;
+			font-size: 30px;
+			/* width: 80%; */
 		}
-		.navIconR {
-			display: none;
-		}
+		
 	}
-	@media only screen and (max-width: 600px) {
+	@media only screen and (max-width: 1249px) {
 		.navTextBar,
 		.navTextBarBox {
 			display: none;
 		}
 		.navIconR {
-			width: 100px;
+			width: 100%;
+			position: absolute;
+			align-items: center;
+			display: block;
+		}
+		.ham{
+			display: block;
 		}
 	}
 </style>
