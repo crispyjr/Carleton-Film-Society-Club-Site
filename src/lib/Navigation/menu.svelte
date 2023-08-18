@@ -21,7 +21,7 @@
 
 <style>
     :global(html) {
-        background: #1d1d2f;
+        background: #000000;
     }
     /* div {
         text-align: center;

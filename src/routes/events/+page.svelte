@@ -1,25 +1,18 @@
 <script>
-    import Calendar from '@event-calendar/core';
-    import TimeGrid from '@event-calendar/time-grid';
 
-    let ec;
-    let plugins = [TimeGrid];
-    let options = {
-        view: 'timeGridWeek',
-        eventSources: [{events: function() {
-            console.log('fetching...');
-            return [];
-        }}]
-    };
-
-
-    function invokeMethod() {
-        ec.refetchEvents();
-    }
 </script>
 
 
-<div class="bg-zinc-800 text-white">
-    <button on:click={invokeMethod}>Refetch events</button>
-    <Calendar bind:this={ec} {plugins} {options} />
-</div>
+<div class="navCover"></div>
+<div></div>
+<style>
+    .navCover{
+        width:100%;
+        height:100px;
+        background: rgb(165, 165, 165);
+        opacity: 0.2;
+        position: relative;
+        box-shadow: 0px 2px 10px red;
+    }
+        
+</style>

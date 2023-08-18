@@ -21,10 +21,10 @@
 		<img class="navIconImg" src={icon} style="" />
 	</div>
 	<div class="navTextBar">
-		<div class="navTextBarBox">events</div>
-		<div class="navTextBarBox">about</div>
-		<div class="navTextBarBox">gallery</div>
-		<div class="navTextBarBox">Sign-up</div>
+		<div class="navTextBarBox"><a href="/events">events</a></div>
+		<div class="navTextBarBox"><a href="/about">about</a></div>
+		<div class="navTextBarBox"><a href="/gallery">gallery</a></div>
+		<div class="navTextBarBox"><a href="https://forms.office.com/r/NkfFJxXmJ0">Sign-Up</a></div>
 	</div>
 	<div class="navIconR">
 		<div class="ham">
