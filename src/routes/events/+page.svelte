@@ -24,11 +24,11 @@ const toggleCollapse = () => {
 </div>
 
 <!-- just to keep the month organized -->
-<Collapse>
+<Collapse month="september 2023">
     <div> 
         
       
-        <div class="eventMonthBox" >
+        <div class="eventMonthBox" transition:slide>
             <div class="showEventsListBar">
                 <div class="eventBox">
                     <div class="eventBoxTextBarTop">
@@ -52,7 +52,7 @@ const toggleCollapse = () => {
         
     </div>
 </Collapse>
-<div> 
+<!-- <div> 
     <div class="eventMonthTitleBar">
         <p class="eventMonthTitle">SEPTEMBER 2023 </p>
         <div class="collapseButtonBox " on:click={toggleCollapse}><p class="collapseText">{collapseButton}</p></div>
@@ -80,7 +80,7 @@ const toggleCollapse = () => {
         </div>
     </div>
     {/if}
-</div>
+</div> -->
 
 
 <style>
@@ -117,38 +117,7 @@ const toggleCollapse = () => {
         /* background: gray; */
         position: relative;
     }
-    .eventMonthTitleBar{
-        width: 100%;
-        height:100px;
-        /* background: purple; */
-        position: relative;
-    }
-    .eventMonthTitle{
-        height:100%;
-        /* background: pink; */
-        position: absolute;
-        font-family: 'Koulen';
-        color: white;
-        font-size: 70px;
-        padding-left: 20px;
-        position: relative;
-        display: inline-block;
-    }
-    .collapseButtonBox{
-        width: 50px;
-        height:50px;
-        /* background: pink; */
-        position: relative;
-        display: inline-block;
-        font-size: 40px;
-        color: white;
-        align-items: end;
-    }
-    .collapseText{
-        position: absolute;
-        bottom: -18px;
-        cursor: pointer;
-    }
+
 
 
     /*SAME CODE FROM MAIN PAGE*/
@@ -156,7 +125,7 @@ const toggleCollapse = () => {
     width:100%;
     height:525px;
     position: relative;
-    background: orange;
+    /* background: orange; */
     /* justify-content: space-around;
     align-items: center;
     flex: 1; */
