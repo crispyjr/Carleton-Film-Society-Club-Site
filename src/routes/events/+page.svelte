@@ -1,8 +1,19 @@
 <script>
+    import {slide} from 'svelte/transition'
+    import Collapse from './collapse.svelte'
 let collapseButton = '˅';
-
-function toggleCollapse(x){
+let visible=true;
+const toggleCollapse = () => {
+    visible = !visible;
+    if(visible==true){
+        collapseButton='˅'
+    }
+    else{
+        collapseButton = '^';
+    }
     
+    
+
 }
 </script>
 
@@ -11,13 +22,43 @@ function toggleCollapse(x){
 <div class="eventsTitleBar">
     <div class="eventsTitle">EVENTS</div>
 </div>
+
 <!-- just to keep the month organized -->
+<Collapse>
+    <div> 
+        
+      
+        <div class="eventMonthBox" >
+            <div class="showEventsListBar">
+                <div class="eventBox">
+                    <div class="eventBoxTextBarTop">
+                        <p>Kung Fu Panda</p>
+                        <p>Screening</p>
+                    </div>
+                    <div class="eventBoxTextBarBottom">
+                        <p>NICOL BUILDING ROOM 210</p>
+                        <p> 4:00PM - 7:00PM</p>
+                    </div>
+                </div>
+                <div class="eventBox"></div>
+                <div class="eventBox"></div>
+                <div class="eventBox"></div>
+                <div class="eventBox"></div>
+                <div class="eventBox"></div>
+                <div class="eventBox"></div>
+                <div class="eventBox"></div>
+            </div>
+        </div>
+        
+    </div>
+</Collapse>
 <div> 
     <div class="eventMonthTitleBar">
         <p class="eventMonthTitle">SEPTEMBER 2023 </p>
-        <div class="collapseButtonBox"><p class="collapseText">{collapseButton}</p></div>
+        <div class="collapseButtonBox " on:click={toggleCollapse}><p class="collapseText">{collapseButton}</p></div>
     </div>
-    <div class="eventMonthBox">
+    {#if visible}
+    <div class="eventMonthBox" transition:slide>
         <div class="showEventsListBar">
             <div class="eventBox">
                 <div class="eventBoxTextBarTop">
@@ -38,9 +79,12 @@ function toggleCollapse(x){
             <div class="eventBox"></div>
         </div>
     </div>
+    {/if}
 </div>
 
+
 <style>
+
     .navCover{
         width:100%;
         height:100px;
