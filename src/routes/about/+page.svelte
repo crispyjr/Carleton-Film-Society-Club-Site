@@ -66,11 +66,6 @@
     </div>
 </div>
 
-
-
-
- 
-<img>
 <style>
     .teamFlex{
         width:100%;
@@ -103,7 +98,7 @@
         text-align: center;
         font-size: 30px;
         font-family: 'Times New Roman', Times, serif;
-        color:white;
+        color:black;
     }
     .memberName{
         width:65%;
@@ -114,7 +109,7 @@
         text-align: center;
         font-size: 30px;
         font-family: 'Times New Roman', Times, serif;
-        color:white;
+        color:black;
     }
     .memberEmail{
         width:80%;
@@ -127,7 +122,7 @@
         font-size: 20px;
         font-family: 'Times New Roman', Times, serif;
         text-decoration: underline;
-        color:white;
+        color:black;
     }
     .meetBar{
         width:42%;

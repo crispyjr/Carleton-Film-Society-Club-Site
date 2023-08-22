@@ -42,9 +42,10 @@ nextButton.addEventListener('click', () => {
 });
 </script>
 
-<div class="flex items-center justify-center h-screen">
-    <button id="prevButton" class="p-4 bg-blue-500 text-white">Prev</button>
-    <img id="slider" class="h-64 w-auto" src="" alt="slider">
-    <button id="nextButton" class="p-4 bg-blue-500 text-white">Next</button>
+  <div class="flex items-center justify-center h-screen">
+    <button id="prevButton" class="absolute left-4 top-1/2 transform -translate-y-1/2 p-4 bg-red-500 text-white opacity-75">Prev</button>
+    <img id="slider" class="h-1/2 w-auto" src="" alt="slider">
+    <button id="nextButton" class="absolute right-4 top-1/2 transform -translate-y-1/2 p-4 bg-red-500 text-white opacity-75">Next</button>
   </div>
+  
   

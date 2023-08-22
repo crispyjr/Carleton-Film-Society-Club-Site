@@ -1,93 +1,130 @@
 <script>
-    import logo from '$lib/assets/CFS_logo.png';
+	// import logo from '$lib/assets/CFS_logo.png';
+	import icon from '$lib/assets/raven3.png';
+	import { Hamburger } from 'svelte-hamburgers';
+	import Menu from './menu.svelte';
+
+
+    let isActive = false;
+
+    function toggleMenu() {
+        isActive = !isActive;
+        console.log(isActive)
+    }
+	let open;
 </script>
 
-
-<body>
-
-<div class="NavBar">
-   
-    <a href="/" ><img src={logo} alt="logo" width="160" height="160" style="padding: px;0 position: absolute; " ></a>
-    <a href="https://forms.office.com/r/NkfFJxXmJ0" target="_blank" rel="noopener noreferrer"><div class="parallelogram">
-        <p style="position: absolute; rotate: 270deg; right:-10px; top: 55px; font-size: 30px;">SIGN UP</p>
-    </div></a>
-    <div class="parallelogram" style="right: -230px; background: black;"></div>
-    <a href="/gallery"><div class="parallelogram" style="right: 94px; background: #fe5959;">
-        <p style="position: absolute; rotate: 270deg; right:-10px; top: 55px; font-size: 30px;">GALLERY</p>
-    </div> </a>
-    <a href="/about"><div class="parallelogram" style="right: 260px; background: #fe9797;">
-        <p style="position: absolute; rotate: 270deg; right: 0px; top: 49px; font-size: 30px;">ABOUT</p>
-    </div></a>
-    <a href="/events"><div class="parallelogram" style="right: 419px; background: #ffb4b4;">
-        <a href="/events" style="position: absolute; rotate: 270deg; right: -3px; top: 55px; font-size: 30px;">EVENTS</a>
-    </div></a>
-    
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link href="https://fonts.googleapis.com/css?family=Koulen" rel="stylesheet" />
+<div class="navBar">
+	<div class="navIconL">
+		<img class="navIconImg" src={icon} style="" />
+	</div>
+	<div class="navTextBar">
+		<div class="navTextBarBox"><a href="/events">events</a></div>
+		<div class="navTextBarBox"><a href="/about">about</a></div>
+		<div class="navTextBarBox"><a href="/gallery">gallery</a></div>
+		<div class="navTextBarBox"><a href="https://forms.office.com/r/NkfFJxXmJ0">Sign-Up</a></div>
+	</div>
+	<div class="navIconR">
+		<div class="ham">
+			<Hamburger bind:open --color="black"/>
+			
+		</div>
+        <!-- <Hamburger bind:open --color="white" /> -->
+		<div class="blockM"></div>
+		<Menu bind:open />
+    </div>
+	
 </div>
 
-
-
-
-
-
-</body>
-
 <style>
-    body{
-        margin: 0;
-        background-color: #4b4645;
-    }
-    .NavBar{
-        position: relative;
-        overflow: hidden;
-        background-color: white;
-        width: 100%;
-        height: 180px;
-        box-shadow: 1px 1px 5px;
-        
-    }
-    .BarElements{
-        position: relative;
-        font-size:30px;
-        
-        left: 30%;
-        border-style: double;
-        border-color:#322F2E ;
-        
-    }
-.parallelogram {
-  width: 250px;
-  height: 160px;
-  background: #e93333;
-  transform: skew(20deg);
-  rotate: 110deg;
-  position: absolute;
-  right: -65px;
-  bottom: 0;
-  top:10px;
-}
+	/*MENU*/
+	.ham{
+		position:absolute;
+		width: 75px;
+		height:80px;
+		right: 0;
+		bottom:0;
+		display: none;
+	}
+	.blockM{
+		position:relative;
+		width:100px;
+		height:100px;
+		
+	}
+	
 
-.chunk{
-    width: 100%;
-    height: 600px;
-    background-color: #fe5959;
-}
-.slideshow{
-    width: 50%;
-    height: 350px;
-    left:50px;
-    position: relative;
-    background-color: #fe9797;
-    z-index: -1;
-    top:30px;
-    border-radius: 10px;
-    box-shadow: 1px 4px 4px;
-}
-.events{
-    width:25%;
-    height: 350px;
-    background-color: #fe5959;
-    position: absolute;
-    right: 50px;
-}
+
+
+	.navBar {
+		width: 100%;
+		color: white;
+		display: flex;
+
+		justify-content: space-between;
+		position: fixed;
+		backdrop-filter: blur(10px);
+		z-index: 1;
+		/* filter: blur(8px);
+        -webkit-filter: blur(8px); */
+	}
+	.navIconL,
+	.navIconR {
+		width: 261px;
+		height: 100px;
+		position: relative;
+		
+	}
+	.navIconR{
+		display:none;
+	}
+	.navIconImg {
+		width: 95%;
+		height: 95%;
+		margin: auto;
+		padding-left: 10px;
+		padding-top: 2px;
+	}
+	.navTextBar {
+		width: 35%;
+		height: 100px;
+		display: flex;
+		justify-content: space-around;
+	}
+	.navTextBarBox {
+		width: 20%;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 30px;
+		font-family: 'Koulen';
+		z-index: 2;
+	}
+
+	/**SCREEN WIDTH*/
+	/* @media only screen and (min-width: 1500px) {
+		.navTextBarBox {
+			font-size: 35px;
+			/* width: 80%; 
+		}
+		
+	} */
+	@media only screen and (max-width: 1250px) {
+		.navTextBar,
+		.navTextBarBox {
+			display: none;
+		}
+		.navIconR {
+			width: 100%;
+			position: absolute;
+			align-items: center;
+			display: block;
+		}
+		.ham{
+			display: block;
+		}
+	}
 </style>

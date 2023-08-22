@@ -1,22 +1,212 @@
 <script>
-    import Calendar from '@event-calendar/core';
-    import TimeGrid from '@event-calendar/time-grid';
-
-    let ec;
-    let plugins = [TimeGrid];
-    let options = {
-        view: 'timeGridWeek',
-        eventSources: [{events: function() {
-            console.log('fetching...');
-            return [];
-        }}]
-    };
-
-
-    function invokeMethod() {
-        ec.refetchEvents();
+    import {slide} from 'svelte/transition'
+    import Collapse from './collapse.svelte'
+let collapseButton = '˅';
+let visible=true;
+const toggleCollapse = () => {
+    visible = !visible;
+    if(visible==true){
+        collapseButton='˅'
     }
+    else{
+        collapseButton = '^';
+    }
+    
+    
+
+}
 </script>
 
-<button on:click={invokeMethod}>Refetch events</button>
-<Calendar bind:this={ec} {plugins} {options} />
+
+<div class="navCover"></div>
+<div class="eventsTitleBar">
+    <div class="eventsTitle">EVENTS</div>
+</div>
+
+<!-- just to keep the month organized -->
+<Collapse month="september 2023">
+    <div> 
+        
+      
+        <div class="eventMonthBox" transition:slide>
+            <div class="showEventsListBar">
+                <div class="eventBox">
+                    <div class="eventBoxTextBarTop">
+                        <p>Kung Fu Panda</p>
+                        <p>Screening</p>
+                    </div>
+                    <div class="eventBoxTextBarBottom">
+                        <p>NICOL BUILDING ROOM 210</p>
+                        <p> 4:00PM - 7:00PM</p>
+                    </div>
+                </div>
+                <div class="eventBox"></div>
+                <div class="eventBox"></div>
+                <div class="eventBox"></div>
+                <div class="eventBox"></div>
+                <div class="eventBox"></div>
+                <div class="eventBox"></div>
+                <div class="eventBox"></div>
+            </div>
+        </div>
+        
+    </div>
+</Collapse>
+<Collapse month="October 2023">
+    <div> 
+        
+      
+        <div class="eventMonthBox" transition:slide>
+            <div class="showEventsListBar">
+                <div class="eventBox">
+                    <div class="eventBoxTextBarTop">
+                        <p>Kung Fu Panda</p>
+                        <p>Screening</p>
+                    </div>
+                    <div class="eventBoxTextBarBottom">
+                        <p>NICOL BUILDING ROOM 210</p>
+                        <p> 4:00PM - 7:00PM</p>
+                    </div>
+                </div>
+                <div class="eventBox"></div>
+                <div class="eventBox"></div>
+                <div class="eventBox"></div>
+                <div class="eventBox"></div>
+                <div class="eventBox"></div>
+                <div class="eventBox"></div>
+                <div class="eventBox"></div>
+            </div>
+        </div>
+        
+    </div>
+</Collapse>
+<!-- <div> 
+    <div class="eventMonthTitleBar">
+        <p class="eventMonthTitle">SEPTEMBER 2023 </p>
+        <div class="collapseButtonBox " on:click={toggleCollapse}><p class="collapseText">{collapseButton}</p></div>
+    </div>
+    {#if visible}
+    <div class="eventMonthBox" transition:slide>
+        <div class="showEventsListBar">
+            <div class="eventBox">
+                <div class="eventBoxTextBarTop">
+                    <p>Kung Fu Panda</p>
+                    <p>Screening</p>
+                </div>
+                <div class="eventBoxTextBarBottom">
+                    <p>NICOL BUILDING ROOM 210</p>
+                    <p> 4:00PM - 7:00PM</p>
+                </div>
+            </div>
+            <div class="eventBox"></div>
+            <div class="eventBox"></div>
+            <div class="eventBox"></div>
+            <div class="eventBox"></div>
+            <div class="eventBox"></div>
+            <div class="eventBox"></div>
+            <div class="eventBox"></div>
+        </div>
+    </div>
+    {/if}
+</div> -->
+
+
+<style>
+
+    .navCover{
+        width:100%;
+        height:100px;
+        background: rgb(165, 165, 165);
+        opacity: 0.2;
+        position: relative;
+        box-shadow: 0px 2px 10px red;
+    }
+    .eventsTitleBar{
+        width:100%;
+        height:150px;
+        position: relative;
+    }
+    .eventsTitle{
+        width:300px;
+        height:90%;
+        position: absolute;
+        font-size: 100px;
+        font-family: 'Koulen';
+        color:white;
+        right:0;
+        bottom: 0;
+        display: flex;
+        align-content: center;
+        justify-content: space-around;
+    }
+    .eventMonthBox{
+        width: 100%;
+        height:550px;
+        /* background: gray; */
+        position: relative;
+    }
+
+
+
+    /*SAME CODE FROM MAIN PAGE*/
+    .showEventsListBar{
+    width:100%;
+    height:525px;
+    position: relative;
+    /* background: orange; */
+    /* justify-content: space-around;
+    align-items: center;
+    flex: 1; */
+    overflow-x: auto;
+    white-space: nowrap;
+    }
+    .showEventsListBar::-webkit-scrollbar{
+    width:10px;
+    }
+    .showEventsListBar::-webkit-scrollbar-track{
+        background: rgb(0, 0, 0);
+    }
+    .showEventsListBar::-webkit-scrollbar-thumb{
+        background: rgb(121, 121, 121);
+    }
+    .showEventsListBar::-webkit-scrollbar-thumb:hover{
+        background: rgb(63, 63, 63);
+    }
+    .eventBox{
+    width:358px;
+    height:468px;
+    background: white;
+    position:relative;
+    display: inline-block;
+    margin:20px 0px 10px 30px;
+}
+.eventBoxImg{
+    width:100%;
+    height:100%;
+    position: absolute;
+    filter: blur(8px);
+  -webkit-filter: blur(8px)
+}
+.eventBoxTextBarTop, .eventBoxTextBarBottom{
+    width:100%;
+    position: absolute;
+    text-align: center;
+    font-family: 'Koulen';
+    
+    color:white;
+}
+.eventBoxTextBarTop{
+    top:20%;
+    font-size: 40px;
+    height: 100px;
+ 
+}
+.eventBoxTextBarBottom{
+    bottom: 0;
+    font-size: 30px;
+    line-height: 1;
+    height:70px;
+
+}
+        
+</style>

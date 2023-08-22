@@ -1,0 +1,44 @@
+<script>
+    import image1 from '$lib/assets/Jacob_Headshot2.jpg'
+    import image2 from '$lib/assets/Jarukson_Headshot2.jpg'
+    import image3 from '$lib/assets/Kim_Headshot3.jpg'
+    import image4 from '$lib/assets/Mackenzie_Headshot2.jpg'
+    import image5 from '$lib/assets/Beatrice_Headshot2.jpg'
+    import image6 from '$lib/assets/Will_Headshot2.jpg'
+    import AboutCard from '$lib/AboutCard/AboutCard.svelte'
+
+    let members = [
+        {image: image1, role: 'President', name: 'Beatrice Villadelgado', email: 'beatricemarievillade@cmail.carleton.ca'},
+        {image: image2, role: 'Vice President', name: 'Will Osborne', email: 'willosborne@cmail.carleton.ca'},
+        {image: image3, role: 'Financial Officer', name: 'Jacob Livingstone', email: 'JacobLivingstone@cmail.carleton.ca'},
+        {image: image4, role: 'Marketing Officer', name: 'Kimberly Huang', email: 'Kimhuang@cmail.carleton.ca'},
+        {image: image5, role: 'Marketing Officer', name: 'Mackenzie Charbonneau', email: 'mackenziecharbonneau@cmail.carleton.ca'},
+        {image: image6, role: 'Events Coordinator', name: 'Jarukson Jeevakumar', email: 'jaruksonjeevakumar@cmail.carleton.ca'},
+    ]
+</script>
+
+<div class="bg-zinc-700 h-full">
+<!-- About section -->
+<div class="w-full h-600 flex relative">
+    <AboutCard />
+</div>
+<!-- Team section -->
+<div>
+    <div class="w-42p h-70px bg-black relative left-28p text-center">
+        <p class="relative top-20p text-3xl font-serif">MEET THE TEAM</p>
+    </div>
+    <div class="w-full h-4/5 relative top-1/20 flex flex-wrap justify-center">        
+        {#each members as member}
+        <div class="w-500 h-500 m-2">
+            <img class="w-2/3 h-3/5 rounded-50p relative left-1/5 top-1/20" src={member.image} alt="lamp">
+            <div class="w-2/3 h-1/10 relative left-1/5 top-7 text-center text-3xl font-serif text-white">{member.role}</div>
+            <div class="w-2/3 h-1/10 relative left-1/5 top-7 text-center text-3xl font-serif text-white">{member.name}</div>
+            <div class="w-4/5 h-1/10 relative left-3/25 top-7 text-center text-xl font-serif underline text-white">
+              <p>{member.email}</p>
+            </div>
+        </div>
+        {/each}
+    </div>
+    
+</div>
+</div>
