@@ -52,6 +52,34 @@ const toggleCollapse = () => {
         
     </div>
 </Collapse>
+<Collapse month="October 2023">
+    <div> 
+        
+      
+        <div class="eventMonthBox" transition:slide>
+            <div class="showEventsListBar">
+                <div class="eventBox">
+                    <div class="eventBoxTextBarTop">
+                        <p>Kung Fu Panda</p>
+                        <p>Screening</p>
+                    </div>
+                    <div class="eventBoxTextBarBottom">
+                        <p>NICOL BUILDING ROOM 210</p>
+                        <p> 4:00PM - 7:00PM</p>
+                    </div>
+                </div>
+                <div class="eventBox"></div>
+                <div class="eventBox"></div>
+                <div class="eventBox"></div>
+                <div class="eventBox"></div>
+                <div class="eventBox"></div>
+                <div class="eventBox"></div>
+                <div class="eventBox"></div>
+            </div>
+        </div>
+        
+    </div>
+</Collapse>
 <!-- <div> 
     <div class="eventMonthTitleBar">
         <p class="eventMonthTitle">SEPTEMBER 2023 </p>
@@ -147,7 +175,7 @@ const toggleCollapse = () => {
     .eventBox{
     width:358px;
     height:468px;
-    background: navy;
+    background: white;
     position:relative;
     display: inline-block;
     margin:20px 0px 10px 30px;

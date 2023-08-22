@@ -1,4 +1,4 @@
-<!-- <script>
+<script>
     import image1 from '$lib/assets/stock1.jpg';
     import image2 from '$lib/assets/stock2.jpg';
     import image3 from '$lib/assets/stock3.jpg';
@@ -12,16 +12,38 @@
       {id: 4, alt: 'stock5', src: image5}
     ]
   </script>
-<div class="flex items-center justify-center min-h-screen bg-zinc-800">
-  <div class="bg-zinc-600 shadow-lg rounded-lg px-5 py-5 md:w-3/4 w-full">
-      <h1 class="flex justify-center items-center font-light text-4xl pb-2 text-white drop-shadow-2xl">Gallery</h1>
-      <div class="grid grid-cols-3 grid-rows-2 gap-4">
-          {#each images as item (item.id)}
-            <div class="ring-4 ring-red-600 dark:ring-red-400 p-1">
-              <img src={item.src} alt={item.alt} class="object-cover h-64 w-full" />
-            </div>
-          {/each}
-      </div>
-  </div>
-</div> -->
+
+<div class="navCover"></div>
+<div class="galleryBox">
+  <div class="photoBox" style="width:443px;height:776px;"></div>
+  <div class="photoBox" style="width:443px;height:508px;"></div>
+  <div class="photoBox" style="width:668px;height:508px;"></div>
+  <div class="photoBox" style="width:637px;height:443px;"></div>
+  <div class="photoBox" style="width:443px;height:776px;"></div>
+
+</div>
+<style>
+  .navCover{
+        width:100%;
+        height:100px;
+        background: rgb(165, 165, 165);
+        opacity: 0.2;
+        position: relative;
+        box-shadow: 0px 2px 10px red;
+    }
+    .galleryBox{
+      width:98%;
+      height:1000px;
+      position: relative;
+      background: navy;
+      margin:10px 0px 0px 10px;
+      display:flex;
+    }
+    .photoBox{
+      width:100px;
+      height:100px;
+      margin:10px;
+      background: white;
+    }
+</style>
 
