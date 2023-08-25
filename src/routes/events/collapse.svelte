@@ -21,9 +21,11 @@ const toggleCollapse = () => {
     <p class="eventMonthTitle">{month.toUpperCase()} </p>
     <div class="collapseButtonBox" on:click={toggleCollapse}><p class="collapseText">{collapseButton}</p></div>
 </div>
-<div >
+<div>
     {#if visible}
-    <slot></slot>
+    <div in:slide>
+        <slot></slot>
+    </div>
     {/if}
 </div>
 

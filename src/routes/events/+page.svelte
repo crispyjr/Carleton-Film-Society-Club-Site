@@ -26,9 +26,7 @@ const toggleCollapse = () => {
 <!-- just to keep the month organized -->
 <Collapse month="september 2023">
     <div> 
-        
-      
-        <div class="eventMonthBox" transition:slide>
+        <div class="eventMonthBox">
             <div class="showEventsListBar">
                 <div class="eventBox">
                     <div class="eventBoxTextBarTop">
@@ -54,9 +52,7 @@ const toggleCollapse = () => {
 </Collapse>
 <Collapse month="October 2023">
     <div> 
-        
-      
-        <div class="eventMonthBox" transition:slide>
+        <div class="eventMonthBox" >
             <div class="showEventsListBar">
                 <div class="eventBox">
                     <div class="eventBoxTextBarTop">
