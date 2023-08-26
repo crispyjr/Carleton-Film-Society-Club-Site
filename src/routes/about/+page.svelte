@@ -6,6 +6,22 @@
     import image4 from '$lib/assets/Mackenzie_Headshot2.jpg'
     import image5 from '$lib/assets/Beatrice_Headshot2.jpg'
     import image6 from '$lib/assets/Will_Headshot2.jpg'
+    let active=false;
+    let member1 = false;
+    let member2 = false;
+    let member3 = false;
+    let member4 = false;
+    let member5 = false;
+    let member6 = false;
+    const act = () => {
+      active=true;
+    }
+    const mem1 = () => {member1=true;active=false;member2=false;member3=false;member4=false;member5=false;member6=false;console.log(member1)}  
+    const mem2 = () => {member2=true;member1=false;member3=false;member4=false;member5=false;member6=false;}
+    const mem3 = () => {member3=true;member1=false;member2=false;member4=false;member5=false;member6=false;}
+    const mem4 = () => {member4=true;member1=false;member2=false;member3=false;member5=false;member6=false;}
+    const mem5 = () => {member5=true;member1=false; member2=false;member3=false;member4=false;member6=false;}
+    const mem6 = () => {member6=true;member1=false;member2=false;member3=false;member5=false;member5=false;}
     
     
 </script>
@@ -14,7 +30,7 @@
 <div class="aboutBar">
   <div class="aboutBox">
     <div class="aboutBox2">
-        <div class="aboutTitle">ABOUT US</div>
+        <div class="aboutTitle" >ABOUT US</div>
         <div class="aboutDescription">We’re a passionate community of movie enthusiasts celebrating the art of filmmaking. We’re dedicated to empowering the Carleton community by providing a platform for knowledge-sharing, learning opportunities, and accessible resources to help individuals express and share their unique stories. Collaborate on film projects, enhance your filmmaking skill through workshops and guest speaker presentations, and showcase your short films in our student-led festival.</div>
     </div>
   </div>
@@ -24,20 +40,20 @@
     <div class="starringBox">STARRING</div>
     <div class="namesBar">
       <div class="namesBox">
-        <div class="leftSlip">Beatrice Villadegado</div>
-        <div class="leftSlip">Will Osborne</div>
-        <div class="leftSlip">Jacob Livingstone</div>
-        <div class="leftSlip">Kimberly Huang</div>
-        <div class="leftSlip">Kenzie Charbonneau</div>
-        <div class="leftSlip">Jarukson Jeevakumar</div>
+        <div class="leftSlip"  class:hoverText={member1} on:mouseenter={mem1}>Beatrice Villadegado</div>
+        <div class="leftSlip" class:hoverText={member2} on:mouseenter={mem2}>Will Osborne</div>
+        <div class="leftSlip" class:hoverText={member3} on:mouseenter={mem3}>Jacob Livingstone</div>
+        <div class="leftSlip" class:hoverText={member4} on:mouseenter={mem4}>Kimberly Huang</div>
+        <div class="leftSlip" class:hoverText={member5} on:mouseenter={mem5}>Kenzie Charbonneau</div>
+        <div class="leftSlip" class:hoverText={member6} on:mouseenter={mem6}>Jarukson Jeevakumar</div>
       </div>
       <div class="positionsBox">
-        <div class="rightSlip">PRESIDENT</div>
-        <div class="rightSlip">VICE PRESIDENT</div>
-        <div class="rightSlip">FINANCIAL OFFICER</div>
-        <div class="rightSlip">MARKETING OFFICER</div>
-        <div class="rightSlip">MARKETING OFFICER</div>
-        <div class="rightSlip">EVENTS COORDINATOR</div>
+        <div class="rightSlip" class:hoverText={member1} on:mouseenter={mem1}>PRESIDENT</div>
+        <div class="rightSlip" class:hoverText={member2} on:mouseenter={mem2}>VICE PRESIDENT</div>
+        <div class="rightSlip" class:hoverText={member3} on:mouseenter={mem3}>FINANCIAL OFFICER</div>
+        <div class="rightSlip" class:hoverText={member4} on:mouseenter={mem4}>MARKETING OFFICER</div>
+        <div class="rightSlip" class:hoverText={member5} on:mouseenter={mem5}>MARKETING OFFICER</div>
+        <div class="rightSlip" class:hoverText={member6} on:mouseenter={mem6}>EVENTS COORDINATOR</div>
       </div>
     </div>
   </div>
@@ -56,7 +72,7 @@
       .aboutBar{
         width:100%;
         height:700px;
-        background: rgb(24, 24, 24);
+        /* background: rgb(24, 24, 24); */
         position: relative;
         display: flex;
         align-items: center;
@@ -80,10 +96,9 @@
         align-items: center;
         justify-content: space-around;
         border-radius: 25px;
+        
       }
-      .aboutBox2:hover{
-        color:aquamarine
-      }
+      
       .aboutTitle{
         /* width:100%;
         height:100px; */
@@ -96,9 +111,7 @@
         font-family: 'Inter';
         font-size: 70px;
       }
-      .aboutTitle:hover{
-        color:black;
-      }
+      
       .aboutDescription{
         width:75%;
         height:300px;
@@ -120,10 +133,11 @@
         
       }
       .teamMembersBox{
-        width:743px;
+        width:700px;
         height:100%;
         /* background: burlywood; */
         position: absolute;
+        top:-30px;
     
       }
       .starringBox{
@@ -157,9 +171,7 @@
         top:10px;
       }
       .leftSlip,.rightSlip{
-        width:100%;
         height:35px;
-        background: black;
         position: relative;
         color:white;
         text-align: right;
@@ -168,6 +180,11 @@
       .rightSlip{
         text-align: left;
         font-weight: bold;
+
       }
+      .hoverText{
+        color: yellow;
+      }
+      
   
   </style>
