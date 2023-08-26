@@ -6,16 +6,13 @@
     import image4 from '$lib/assets/Mackenzie_Headshot2.jpg'
     import image5 from '$lib/assets/Beatrice_Headshot2.jpg'
     import image6 from '$lib/assets/Will_Headshot2.jpg'
-    let active=false;
     let member1 = false;
     let member2 = false;
     let member3 = false;
     let member4 = false;
     let member5 = false;
     let member6 = false;
-    const act = () => {
-      active=true;
-    }
+   
     const mem1 = () => {member1=true;active=false;member2=false;member3=false;member4=false;member5=false;member6=false;console.log(member1)}  
     const mem2 = () => {member2=true;member1=false;member3=false;member4=false;member5=false;member6=false;}
     const mem3 = () => {member3=true;member1=false;member2=false;member4=false;member5=false;member6=false;}
@@ -32,6 +29,16 @@
     <div class="aboutBox2">
         <div class="aboutTitle" >ABOUT US</div>
         <div class="aboutDescription">We’re a passionate community of movie enthusiasts celebrating the art of filmmaking. We’re dedicated to empowering the Carleton community by providing a platform for knowledge-sharing, learning opportunities, and accessible resources to help individuals express and share their unique stories. Collaborate on film projects, enhance your filmmaking skill through workshops and guest speaker presentations, and showcase your short films in our student-led festival.</div>
+    </div>
+    <div class="portraitBox">
+      <div class="imageBox">
+        <img class="portraitImage" src={image3}>
+      </div>
+      <div class="portraitTextBar">
+        <div class="portraitName">KIMBERLY HUANG</div>
+        <div class="portraitPosition">MARKETING OFFICER</div>
+        <div class="portraitMail">Kimhuang@cmail.carleton.ca</div>
+      </div>
     </div>
   </div>
 </div>
@@ -96,9 +103,64 @@
         align-items: center;
         justify-content: space-around;
         border-radius: 25px;
+        display: none;
         
       }
+      /*frames*/
+      .portraitBox{
+        width:100%;
+        height:100%;
+        position: absolute;
+        /* background: green; */
+        border-radius: 25px;
+
+      }
+      .imageBox{
+        width:55%;
+        height:70%;
+        /* background: rgb(7, 34, 7); */
+        position: absolute;
+        left:22%;
+        top:10%;
+      }
+      .portraitImage{
+        width:100%;
+        height:100%;
+      }
+      .portraitTextBar{
+        width:96%;
+        height:80px;
+        /* background: rgb(53, 70, 53); */
+        position: absolute;
+        bottom: 0;
+        left:12px;
+      }
+      .portraitName, .portraitPosition{
+        width:350px;
+        height:50px;
+        position: absolute;
+        /* background: red; */
+        font-size: 28px;
+        font-family: 'Inter';
+        color: white;
+      }
       
+      .portraitPosition{
+        right:0;
+        text-align: right;
+      }
+      .portraitMail{
+        width: 400px;
+        height:30px;
+        /* background: red; */
+        position: absolute;
+        bottom: 10px;
+        text-align: right;
+        right: 0;
+        text-decoration: underline;
+        color: white;
+      }
+      /*about*/
       .aboutTitle{
         /* width:100%;
         height:100px; */
