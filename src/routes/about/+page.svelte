@@ -12,25 +12,63 @@
     let member4 = false;
     let member5 = false;
     let member6 = false;
-   
-    const mem1 = () => {member1=true;active=false;member2=false;member3=false;member4=false;member5=false;member6=false;console.log(member1)}  
-    const mem2 = () => {member2=true;member1=false;member3=false;member4=false;member5=false;member6=false;}
+
+    let membersNames = ["BEATRICE VILLADELGADO", "WILL OSBORNE", "JACOB LIVIGSTONE","KIMBERLY HUANG", "KENZIE CHARBONNEAU", "JARUKSON JEEVAKUMAR"]
+    let membersPositions = ["PRESIDENT", "VICE PRESIDENT", "FINANCIAL OFFICER", "MARKETING OFFICER", "MARKETING OFFICER", "EVENT COORDINATOR"]
+    let membersEmails = ["beatricemarievillade@cmail.carleton.ca","willosborne@cmail.carleton.ca","JacobLivingstone@cmail.carleton.ca","Kimhuang@cmail.carleton.ca","mackenziecharbonneau@cmail.carleton.ca","jaruksonjeevakumar@cmail.carleton.ca"]
+    const mem1 = () => {member1=true;member2=false;member3=false;member4=false;member5=false;member6=false;console.log(member1)}  
+    const mem2 = () => {member2=true;member1=false;member3=false;member4=false;member5=false;member6=false;console.log(member1)}
     const mem3 = () => {member3=true;member1=false;member2=false;member4=false;member5=false;member6=false;}
     const mem4 = () => {member4=true;member1=false;member2=false;member3=false;member5=false;member6=false;}
-    const mem5 = () => {member5=true;member1=false; member2=false;member3=false;member4=false;member6=false;}
+    const mem5 = () => {member5=true;member1=false;member2=false;member3=false;member4=false;member6=false;}
     const mem6 = () => {member6=true;member1=false;member2=false;member3=false;member5=false;member5=false;}
     
+    let currentName =  "";
+    let currentPosition = "";
+    let currentEmail = "";
+    let aboutIndex=0;
+
+    const nextSlide = () => {
+      if(aboutIndex == 5){
+        aboutIndex=0;
+      }
+      else{
+        aboutIndex += 1;
+        console.log("stop")
+        stop();
+      }
+      console.log("bing")
+    }
+    // function timer(){
+    //   setInterval(()=>{
+    //     nextSlide()      
+    //   },10000);
+    // }
+    
+    const sponge = setInterval(()=>{
+       nextSlide();    
+      },10000);
+
+
+    function stop(){ 
+      clearInterval(sponge);
+    }
     
 </script>
 <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
 <div class="navCover"></div>
 <div class="aboutBar">
   <div class="aboutBox">
-    <div class="aboutBox2">
+    {#if aboutIndex==0}
+    <div class="aboutBox2 fade">
         <div class="aboutTitle" >ABOUT US</div>
         <div class="aboutDescription">We’re a passionate community of movie enthusiasts celebrating the art of filmmaking. We’re dedicated to empowering the Carleton community by providing a platform for knowledge-sharing, learning opportunities, and accessible resources to help individuals express and share their unique stories. Collaborate on film projects, enhance your filmmaking skill through workshops and guest speaker presentations, and showcase your short films in our student-led festival.</div>
     </div>
-    <div class="portraitBox">
+    {:else if aboutIndex>0}
+
+    
+
+    <div class="portraitBox fade">
       <div class="imageBox">
         <img class="portraitImage" src={image3}>
       </div>
@@ -40,6 +78,8 @@
         <div class="portraitMail">Kimhuang@cmail.carleton.ca</div>
       </div>
     </div>
+    {/if}
+
   </div>
 </div>
 <div class="teamMembersBar">
@@ -103,7 +143,6 @@
         align-items: center;
         justify-content: space-around;
         border-radius: 25px;
-        display: none;
         
       }
       /*frames*/
@@ -233,11 +272,13 @@
         top:10px;
       }
       .leftSlip,.rightSlip{
-        height:35px;
+        height:38px;
         position: relative;
         color:white;
         text-align: right;
         font-size: 25px;
+        /* background: green; */
+        cursor: pointer;
       }
       .rightSlip{
         text-align: left;
@@ -248,5 +289,26 @@
         color: yellow;
       }
       
-  
+      .fade {
+		-webkit-animation-name: fade;
+		-webkit-animation-duration: 2s;
+		animation-name: fade;
+		animation-duration: 2s;
+	}
+	@-webkit-keyframes fade {
+		from {
+			opacity: 0.3;
+		}
+		to {
+			opacity: 1;
+		}
+	}
+	@keyframes fade {
+		from {
+			opacity: 0.3;
+		}
+		to {
+			opacity: 1;
+		}
+	}
   </style>
