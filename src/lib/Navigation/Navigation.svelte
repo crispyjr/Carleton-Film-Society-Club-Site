@@ -4,13 +4,12 @@
 	import { Hamburger } from 'svelte-hamburgers';
 	import Menu from './menu.svelte';
 
+	let isActive = false;
 
-    let isActive = false;
-
-    function toggleMenu() {
-        isActive = !isActive;
-        console.log(isActive)
-    }
+	function toggleMenu() {
+		isActive = !isActive;
+		console.log(isActive);
+	}
 	let open;
 </script>
 
@@ -18,7 +17,7 @@
 <link href="https://fonts.googleapis.com/css?family=Koulen" rel="stylesheet" />
 <div class="navBar">
 	<div class="navIconL">
-		<img class="navIconImg" src={icon} style="" />
+		<a href="/"><img class="navIconImg" src={icon} style="" /></a>
 	</div>
 	<div class="navTextBar">
 		<div class="navTextBarBox"><a href="/events">events</a></div>
@@ -28,35 +27,29 @@
 	</div>
 	<div class="navIconR">
 		<div class="ham">
-			<Hamburger bind:open --color="black"/>
-			
+			<Hamburger bind:open --color="black" />
 		</div>
-        <!-- <Hamburger bind:open --color="white" /> -->
-		<div class="blockM"></div>
+		<!-- <Hamburger bind:open --color="white" /> -->
+		<div class="blockM" />
 		<Menu bind:open />
-    </div>
-	
+	</div>
 </div>
 
 <style>
 	/*MENU*/
-	.ham{
-		position:absolute;
+	.ham {
+		position: absolute;
 		width: 75px;
-		height:80px;
+		height: 80px;
 		right: 0;
-		bottom:0;
+		bottom: 0;
 		display: none;
 	}
-	.blockM{
-		position:relative;
-		width:100px;
-		height:100px;
-		
+	.blockM {
+		position: relative;
+		width: 100px;
+		height: 100px;
 	}
-	
-
-
 
 	.navBar {
 		width: 100%;
@@ -75,10 +68,9 @@
 		width: 261px;
 		height: 100px;
 		position: relative;
-		
 	}
-	.navIconR{
-		display:none;
+	.navIconR {
+		display: none;
 	}
 	.navIconImg {
 		width: 95%;
@@ -123,7 +115,7 @@
 			align-items: center;
 			display: block;
 		}
-		.ham{
+		.ham {
 			display: block;
 		}
 	}
