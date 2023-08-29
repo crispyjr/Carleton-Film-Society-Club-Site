@@ -1,11 +1,11 @@
 <script>
     
-    import image1 from '$lib/assets/Jacob_Headshot2.jpg'
-    import image2 from '$lib/assets/Jarukson_Headshot2.jpg'
-    import image3 from '$lib/assets/Kim_Headshot3.jpg'
-    import image4 from '$lib/assets/Mackenzie_Headshot2.jpg'
-    import image5 from '$lib/assets/Beatrice_Headshot2.jpg'
-    import image6 from '$lib/assets/Will_Headshot2.jpg'
+    import image3 from '$lib/assets/Jacob_Headshot2.jpg'
+    import image6 from '$lib/assets/Jarukson_Headshot2.jpg'
+    import image4 from '$lib/assets/Kim_Headshot3.jpg'
+    import image5 from '$lib/assets/Mackenzie_Headshot2.jpg'
+    import image1 from '$lib/assets/Beatrice_Headshot2.jpg'
+    import image2 from '$lib/assets/Will_Headshot2.jpg'
     let member1 = false;
     let member2 = false;
     let member3 = false;
@@ -16,12 +16,13 @@
     let membersNames = ["BEATRICE VILLADELGADO", "WILL OSBORNE", "JACOB LIVIGSTONE","KIMBERLY HUANG", "KENZIE CHARBONNEAU", "JARUKSON JEEVAKUMAR"]
     let membersPositions = ["PRESIDENT", "VICE PRESIDENT", "FINANCIAL OFFICER", "MARKETING OFFICER", "MARKETING OFFICER", "EVENT COORDINATOR"]
     let membersEmails = ["beatricemarievillade@cmail.carleton.ca","willosborne@cmail.carleton.ca","JacobLivingstone@cmail.carleton.ca","Kimhuang@cmail.carleton.ca","mackenziecharbonneau@cmail.carleton.ca","jaruksonjeevakumar@cmail.carleton.ca"]
-    const mem1 = () => {member1=true;member2=false;member3=false;member4=false;member5=false;member6=false;console.log(member1)}  
-    const mem2 = () => {member2=true;member1=false;member3=false;member4=false;member5=false;member6=false;console.log(member1)}
-    const mem3 = () => {member3=true;member1=false;member2=false;member4=false;member5=false;member6=false;}
-    const mem4 = () => {member4=true;member1=false;member2=false;member3=false;member5=false;member6=false;}
-    const mem5 = () => {member5=true;member1=false;member2=false;member3=false;member4=false;member6=false;}
-    const mem6 = () => {member6=true;member1=false;member2=false;member3=false;member5=false;member5=false;}
+    let memberImages = [image1,image2,image3,image4,image5,image6]
+    const mem1 = () => {member1=true;member2=false;member3=false;member4=false;member5=false;member6=false;aboutIndex=1;}  
+    const mem2 = () => {member2=true;member1=false;member3=false;member4=false;member5=false;member6=false;aboutIndex=2;}
+    const mem3 = () => {member3=true;member1=false;member2=false;member4=false;member5=false;member6=false;aboutIndex=3;}
+    const mem4 = () => {member4=true;member1=false;member2=false;member3=false;member5=false;member6=false;aboutIndex=4;}
+    const mem5 = () => {member5=true;member1=false;member2=false;member3=false;member4=false;member6=false;aboutIndex=5;}
+    const mem6 = () => {member6=true;member1=false;member2=false;member3=false;member5=false;member5=false;aboutIndex=6;}
     
     let currentName =  "";
     let currentPosition = "";
@@ -29,53 +30,38 @@
     let aboutIndex=0;
 
     const nextSlide = () => {
-      if(aboutIndex == 5){
+      if(aboutIndex > 6){
         aboutIndex=0;
       }
       else{
         aboutIndex += 1;
-        console.log("stop")
+        console.log("stop" + aboutIndex)
         stop();
       }
       console.log("bing")
     }
-    // function timer(){
-    //   setInterval(()=>{
-    //     nextSlide()      
-    //   },10000);
-    // }
-    
-    const sponge = setInterval(()=>{
-       nextSlide();    
-      },10000);
+   
 
-
-    function stop(){ 
-      clearInterval(sponge);
-    }
     
 </script>
 <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
 <div class="navCover"></div>
 <div class="aboutBar">
-  <div class="aboutBox">
+  <div class="aboutBox" >
     {#if aboutIndex==0}
     <div class="aboutBox2 fade">
         <div class="aboutTitle" >ABOUT US</div>
         <div class="aboutDescription">We’re a passionate community of movie enthusiasts celebrating the art of filmmaking. We’re dedicated to empowering the Carleton community by providing a platform for knowledge-sharing, learning opportunities, and accessible resources to help individuals express and share their unique stories. Collaborate on film projects, enhance your filmmaking skill through workshops and guest speaker presentations, and showcase your short films in our student-led festival.</div>
     </div>
     {:else if aboutIndex>0}
-
-    
-
-    <div class="portraitBox fade">
+    <div class="portraitBox fade" >
       <div class="imageBox">
-        <img class="portraitImage" src={image3}>
+        <img class="portraitImage" src={memberImages[aboutIndex-1]}>
       </div>
       <div class="portraitTextBar">
-        <div class="portraitName">KIMBERLY HUANG</div>
-        <div class="portraitPosition">MARKETING OFFICER</div>
-        <div class="portraitMail">Kimhuang@cmail.carleton.ca</div>
+        <div class="portraitName">{membersNames[aboutIndex-1]}</div>
+        <div class="portraitPosition">{membersPositions[aboutIndex-1]}</div>
+        <div class="portraitMail">{membersEmails[aboutIndex-1]}</div>
       </div>
     </div>
     {/if}
@@ -175,7 +161,7 @@
         left:12px;
       }
       .portraitName, .portraitPosition{
-        width:350px;
+        width:360px;
         height:50px;
         position: absolute;
         /* background: red; */
