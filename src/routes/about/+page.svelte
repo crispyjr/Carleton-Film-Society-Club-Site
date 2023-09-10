@@ -1,281 +1,257 @@
 <script>
-    
-    import image3 from '$lib/assets/Jacob_Headshot2.jpg'
-    import image6 from '$lib/assets/Jarukson_Headshot2.jpg'
-    import image4 from '$lib/assets/Kim_Headshot3.jpg'
-    import image5 from '$lib/assets/Mackenzie_Headshot2.jpg'
-    import image1 from '$lib/assets/Beatrice_Headshot2.jpg'
-    import image2 from '$lib/assets/Will_Headshot2.jpg'
-    let member1 = false;
-    let member2 = false;
-    let member3 = false;
-    let member4 = false;
-    let member5 = false;
-    let member6 = false;
+	import { onMount } from 'svelte';
+	import NavCover from '$lib/NavCover.svelte';
 
-    let membersNames = ["BEATRICE VILLADELGADO", "WILL OSBORNE", "JACOB LIVIGSTONE","KIMBERLY HUANG", "KENZIE CHARBONNEAU", "JARUKSON JEEVAKUMAR"]
-    let membersPositions = ["PRESIDENT", "VICE PRESIDENT", "FINANCIAL OFFICER", "MARKETING OFFICER", "MARKETING OFFICER", "EVENT COORDINATOR"]
-    let membersEmails = ["beatricemarievillade@cmail.carleton.ca","willosborne@cmail.carleton.ca","JacobLivingstone@cmail.carleton.ca","Kimhuang@cmail.carleton.ca","mackenziecharbonneau@cmail.carleton.ca","jaruksonjeevakumar@cmail.carleton.ca"]
-    let memberImages = [image1,image2,image3,image4,image5,image6]
-    const mem1 = () => {member1=true;member2=false;member3=false;member4=false;member5=false;member6=false;aboutIndex=1;}  
-    const mem2 = () => {member2=true;member1=false;member3=false;member4=false;member5=false;member6=false;aboutIndex=2;}
-    const mem3 = () => {member3=true;member1=false;member2=false;member4=false;member5=false;member6=false;aboutIndex=3;}
-    const mem4 = () => {member4=true;member1=false;member2=false;member3=false;member5=false;member6=false;aboutIndex=4;}
-    const mem5 = () => {member5=true;member1=false;member2=false;member3=false;member4=false;member6=false;aboutIndex=5;}
-    const mem6 = () => {member6=true;member1=false;member2=false;member3=false;member5=false;member5=false;aboutIndex=6;}
-    
-    let currentName =  "";
-    let currentPosition = "";
-    let currentEmail = "";
-    let aboutIndex=0;
+	let data = [];
+	let highlightedMemberId = null;
+	let aboutIndex = 0;
+	let aboutDescriptionText =
+		'We’re a passionate community of movie enthusiasts celebrating the art of filmmaking. We’re dedicated to empowering the Carleton community by providing a platform for knowledge-sharing, learning opportunities, and accessible resources to help individuals express and share their unique stories. Collaborate on film projects, enhance your filmmaking skill through workshops and guest speaker presentations, and showcase your short films in our student-led festival.';
 
-    const nextSlide = () => {
-      if(aboutIndex > 6){
-        aboutIndex=0;
-      }
-      else{
-        aboutIndex += 1;
-        console.log("stop" + aboutIndex)
-        stop();
-      }
-      console.log("bing")
-    }
-   
+	onMount(fetchData);
 
-    
+	async function fetchData() {
+		try {
+			const response = await fetch('http://localhost:8080/get/members');
+			data = await response.json();
+		} catch (error) {
+			console.error('Error fetching data:', error);
+		}
+	}
+
+	const showMember = (id) => {
+		highlightedMemberId = id;
+		const memberIndex = data.findIndex((member) => member.id === id);
+		if (memberIndex !== -1) {
+			aboutIndex = memberIndex + 1; // Add 1 because 0 is for the default "ABOUT US" view
+		}
+	};
+
+	const resetView = () => {
+		highlightedMemberId = null;
+		aboutIndex = 0;
+	};
 </script>
-<link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
-<div class="navCover"></div>
-<div class="aboutBar">
-  <div class="aboutBox" >
-    {#if aboutIndex==0}
-    <div class="aboutBox2 fade">
-        <div class="aboutTitle" >ABOUT US</div>
-        <div class="aboutDescription">We’re a passionate community of movie enthusiasts celebrating the art of filmmaking. We’re dedicated to empowering the Carleton community by providing a platform for knowledge-sharing, learning opportunities, and accessible resources to help individuals express and share their unique stories. Collaborate on film projects, enhance your filmmaking skill through workshops and guest speaker presentations, and showcase your short films in our student-led festival.</div>
-    </div>
-    {:else if aboutIndex>0}
-    <div class="portraitBox fade" >
-      <div class="imageBox">
-        <img class="portraitImage" src={memberImages[aboutIndex-1]}>
-      </div>
-      <div class="portraitTextBar">
-        <div class="portraitName">{membersNames[aboutIndex-1]}</div>
-        <div class="portraitPosition">{membersPositions[aboutIndex-1]}</div>
-        <div class="portraitMail">{membersEmails[aboutIndex-1]}</div>
-      </div>
-    </div>
-    {/if}
 
-  </div>
+<link href="https://fonts.googleapis.com/css?family=Inter" rel="stylesheet" />
+
+<NavCover />
+
+<div class="aboutBar">
+	<div class="aboutBox">
+		{#if aboutIndex === 0}
+			<div class="aboutBox2 fade">
+				<div class="aboutTitle">ABOUT US</div>
+				<div class="aboutDescription">{aboutDescriptionText}</div>
+			</div>
+		{:else}
+			<div class="portraitBox fade">
+				<div class="imageBox">
+					<img
+						class="portraitImage"
+						src="data:image/png;base64,{data[aboutIndex - 1].image}"
+						alt=""
+					/>
+				</div>
+				<div class="portraitTextBar">
+					<div class="portraitName">{data[aboutIndex - 1].name}</div>
+					<div class="portraitPosition">{data[aboutIndex - 1].title}</div>
+					<div class="portraitMail">{data[aboutIndex - 1].email}</div>
+				</div>
+			</div>
+		{/if}
+	</div>
 </div>
+
 <div class="teamMembersBar">
-  <div class="teamMembersBox">
-    <div class="starringBox">STARRING</div>
-    <div class="namesBar">
-      <div class="namesBox">
-        <div class="leftSlip"  class:hoverText={member1} on:mouseenter={mem1}>Beatrice Villadegado</div>
-        <div class="leftSlip" class:hoverText={member2} on:mouseenter={mem2}>Will Osborne</div>
-        <div class="leftSlip" class:hoverText={member3} on:mouseenter={mem3}>Jacob Livingstone</div>
-        <div class="leftSlip" class:hoverText={member4} on:mouseenter={mem4}>Kimberly Huang</div>
-        <div class="leftSlip" class:hoverText={member5} on:mouseenter={mem5}>Kenzie Charbonneau</div>
-        <div class="leftSlip" class:hoverText={member6} on:mouseenter={mem6}>Jarukson Jeevakumar</div>
-      </div>
-      <div class="positionsBox">
-        <div class="rightSlip" class:hoverText={member1} on:mouseenter={mem1}>PRESIDENT</div>
-        <div class="rightSlip" class:hoverText={member2} on:mouseenter={mem2}>VICE PRESIDENT</div>
-        <div class="rightSlip" class:hoverText={member3} on:mouseenter={mem3}>FINANCIAL OFFICER</div>
-        <div class="rightSlip" class:hoverText={member4} on:mouseenter={mem4}>MARKETING OFFICER</div>
-        <div class="rightSlip" class:hoverText={member5} on:mouseenter={mem5}>MARKETING OFFICER</div>
-        <div class="rightSlip" class:hoverText={member6} on:mouseenter={mem6}>EVENTS COORDINATOR</div>
-      </div>
-    </div>
-  </div>
+	<div class="teamMembersBox">
+		<div class="starringBox">STARRING</div>
+		<div class="w-full h-4/5 relative">
+			{#each data as member (member.id)}
+				<div
+					class={`flex justify-between items-center ${highlightedMemberId === member.id ? 'text-yellow-400' : ''}`}
+					on:mouseenter={() => showMember(member.id)}
+					on:mouseleave={resetView}
+				>
+					<div class="h-9 relative text-white text-2xl cursor-pointer text-right">{member.name}</div>
+					<div class="h-9 relative text-white text-2xl cursor-pointer text-left">{member.title}</div>
+				</div>
+			{/each}
+		</div>
+
+
+		<!-- <div class="namesBar">
+          <div class="namesBox">
+            {#each data as member (member.id)}
+              <div class="leftSlip" on:mouseenter={() => showMember(member.id)} on:mouseleave={resetView}>
+                  {member.name}
+              </div>
+              {/each}
+          </div>
+          <div class="positionsBox">
+              {#each data as member}
+              <div class="rightSlip" on:mouseenter={() => showMember(member.id)} on:mouseleave={resetView}>
+                  <p class="uppercase"> {member.title} </p>
+              </div>
+              {/each}
+          </div>
+      </div> -->
+	</div>
 </div>
 
 <style>
-    .navCover{
-          width:100%;
-          height:100px;
-          background: rgb(165, 165, 165);
-          opacity: 0.2;
-          position: relative;
-          box-shadow: 0px 2px 10px red;
-      }
 
-      .aboutBar{
-        width:100%;
-        height:700px;
-        /* background: rgb(24, 24, 24); */
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-      }
-      .aboutBox{
-        width:743px;
-        height: 500px;
-        background: #1E1D1D;
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        border-radius: 25px;
-      }
-      .aboutBox2{
-        width:100%;
-        height:100%;
-        position: absolute;
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        border-radius: 25px;
-        
-      }
-      /*frames*/
-      .portraitBox{
-        width:100%;
-        height:100%;
-        position: absolute;
-        /* background: green; */
-        border-radius: 25px;
+	.aboutBar {
+		width: 100%;
+		height: 700px;
+		/* background: rgb(24, 24, 24); */
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+	}
+	.aboutBox {
+		width: 743px;
+		height: 500px;
+		background: #1e1d1d;
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+		border-radius: 25px;
+	}
+	.aboutBox2 {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+		border-radius: 25px;
+	}
+	/*frames*/
+	.portraitBox {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		/* background: green; */
+		border-radius: 25px;
+	}
+	.imageBox {
+		width: 55%;
+		height: 70%;
+		/* background: rgb(7, 34, 7); */
+		position: absolute;
+		left: 22%;
+		top: 10%;
+	}
+	.portraitImage {
+		width: 100%;
+		height: 100%;
+	}
+	.portraitTextBar {
+		width: 96%;
+		height: 80px;
+		/* background: rgb(53, 70, 53); */
+		position: absolute;
+		bottom: 0;
+		left: 12px;
+	}
+	.portraitName,
+	.portraitPosition {
+		width: 360px;
+		height: 50px;
+		position: absolute;
+		/* background: red; */
+		font-size: 28px;
+		font-family: 'Inter';
+		color: white;
+	}
 
-      }
-      .imageBox{
-        width:55%;
-        height:70%;
-        /* background: rgb(7, 34, 7); */
-        position: absolute;
-        left:22%;
-        top:10%;
-      }
-      .portraitImage{
-        width:100%;
-        height:100%;
-      }
-      .portraitTextBar{
-        width:96%;
-        height:80px;
-        /* background: rgb(53, 70, 53); */
-        position: absolute;
-        bottom: 0;
-        left:12px;
-      }
-      .portraitName, .portraitPosition{
-        width:360px;
-        height:50px;
-        position: absolute;
-        /* background: red; */
-        font-size: 28px;
-        font-family: 'Inter';
-        color: white;
-      }
-      
-      .portraitPosition{
-        right:0;
-        text-align: right;
-      }
-      .portraitMail{
-        width: 400px;
-        height:30px;
-        /* background: red; */
-        position: absolute;
-        bottom: 10px;
-        text-align: right;
-        right: 0;
-        text-decoration: underline;
-        color: white;
-      }
-      /*about*/
-      .aboutTitle{
-        /* width:100%;
+	.portraitPosition {
+		right: 0;
+		text-align: right;
+	}
+	.portraitMail {
+		width: 400px;
+		height: 30px;
+		/* background: red; */
+		position: absolute;
+		bottom: 10px;
+		text-align: right;
+		right: 0;
+		text-decoration: underline;
+		color: white;
+	}
+	/*about*/
+	.aboutTitle {
+		/* width:100%;
         height:100px; */
-        position: absolute;
-        top:50px;
-        color:white;
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        font-family: 'Inter';
-        font-size: 70px;
-      }
-      
-      .aboutDescription{
-        width:75%;
-        height:300px;
-        position: absolute;
-        bottom:40px;
-        color:white;
-        font-size: 20px;
-        text-align: center;
-        font-family: 'Inter';
-      }
-      .teamMembersBar{
-        width:100%;
-        height:400px;
-        background:black;
-        position:relative;
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        
-      }
-      .teamMembersBox{
-        width:700px;
-        height:100%;
-        /* background: burlywood; */
-        position: absolute;
-        top:-30px;
-    
-      }
-      .starringBox{
-        width:100%;
-        height:80px;
-        /* background:green; */
-        text-align: center;
-        font-size: 48px;
-        color:white;
-        font-family: 'Inter';
-      }
-      .namesBar{
-        width:100%;
-        height:70%;
-        /* background: blue; */
-        position: relative;
-      }
-      .namesBox{
-        width:47%;
-        height:100%;
-        /* background: pink; */
-        position: absolute;
-        top:10px;
-      }
-      .positionsBox{
-        width:47%;
-        height:100%;
-        /* background: magenta; */
-        position: absolute;
-        right:0;
-        top:10px;
-      }
-      .leftSlip,.rightSlip{
-        height:38px;
-        position: relative;
-        color:white;
-        text-align: right;
-        font-size: 25px;
-        /* background: green; */
-        cursor: pointer;
-      }
-      .rightSlip{
-        text-align: left;
-        font-weight: bold;
+		position: absolute;
+		top: 50px;
+		color: white;
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+		font-family: 'Inter';
+		font-size: 70px;
+	}
 
-      }
-      .hoverText{
-        color: yellow;
-      }
-      
-      .fade {
+	.aboutDescription {
+		width: 75%;
+		height: 300px;
+		position: absolute;
+		bottom: 40px;
+		color: white;
+		font-size: 20px;
+		text-align: center;
+		font-family: 'Inter';
+	}
+	.teamMembersBar {
+		width: 100%;
+		height: 400px;
+		background: black;
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+	}
+	.teamMembersBox {
+		width: 700px;
+		height: 100%;
+		/* background: burlywood; */
+		position: absolute;
+		top: -30px;
+	}
+	.starringBox {
+		width: 100%;
+		height: 80px;
+		/* background:green; */
+		text-align: center;
+		font-size: 48px;
+		color: white;
+		font-family: 'Inter';
+	}
+	.namesBox {
+		width: 47%;
+		height: 100%;
+		/* background: pink; */
+		position: absolute;
+		top: 10px;
+	}
+	.positionsBox {
+		width: 47%;
+		height: 100%;
+		/* background: magenta; */
+		position: absolute;
+		right: 0;
+		top: 10px;
+	}
+	.hoverText {
+		color: yellow;
+	}
+
+	.fade {
 		-webkit-animation-name: fade;
 		-webkit-animation-duration: 2s;
 		animation-name: fade;
@@ -297,4 +273,4 @@
 			opacity: 1;
 		}
 	}
-  </style>
+</style>

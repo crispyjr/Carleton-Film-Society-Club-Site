@@ -23,7 +23,7 @@
 		<div class="navTextBarBox"><a href="/events">events</a></div>
 		<div class="navTextBarBox"><a href="/about">about</a></div>
 		<div class="navTextBarBox"><a href="/gallery">gallery</a></div>
-		<div class="navTextBarBox"><a href="https://forms.office.com/r/NkfFJxXmJ0">Sign-Up</a></div>
+		<div class="navTextBarBox"><a href="https://forms.office.com/r/NkfFJxXmJ0" target="_blank" >Sign-Up</a></div>
 	</div>
 	<div class="navIconR">
 		<div class="ham">
