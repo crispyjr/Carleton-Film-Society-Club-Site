@@ -5,7 +5,7 @@
 </script>
 
 <Navigation />
-<div class="pt-20">
+<div>
 	<slot />
 </div>
 
