@@ -35,8 +35,6 @@
 
 <link href="https://fonts.googleapis.com/css?family=Inter" rel="stylesheet" />
 
-<NavCover />
-
 <div class="aboutBar">
 	<div class="aboutBox">
 		{#if aboutIndex === 0}
@@ -73,29 +71,11 @@
 					on:mouseenter={() => showMember(member.id)}
 					on:mouseleave={resetView}
 				>
-					<div class="h-9 relative text-white text-2xl cursor-pointer text-right">{member.name}</div>
-					<div class="h-9 relative text-white text-2xl cursor-pointer text-left">{member.title}</div>
+					<div class="h-9 w-1/2 text-white text-2xl cursor-pointer text-right pr-4">{member.name}</div>
+					<div class="h-9 w-1/2 text-white text-2xl cursor-pointer text-left pl-4">{member.title}</div>
 				</div>
 			{/each}
 		</div>
-
-
-		<!-- <div class="namesBar">
-          <div class="namesBox">
-            {#each data as member (member.id)}
-              <div class="leftSlip" on:mouseenter={() => showMember(member.id)} on:mouseleave={resetView}>
-                  {member.name}
-              </div>
-              {/each}
-          </div>
-          <div class="positionsBox">
-              {#each data as member}
-              <div class="rightSlip" on:mouseenter={() => showMember(member.id)} on:mouseleave={resetView}>
-                  <p class="uppercase"> {member.title} </p>
-              </div>
-              {/each}
-          </div>
-      </div> -->
 	</div>
 </div>
 
