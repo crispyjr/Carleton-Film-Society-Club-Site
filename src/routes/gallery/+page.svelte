@@ -1,5 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
+	import NavCover from '$lib/NavCover.svelte';
+
 
 	let data = [];
 
@@ -14,7 +16,7 @@
 		}
 	}
 </script>
-
+<NavCover />
 <div class="p-5 sm:p-8">
 	<div
 		class="columns-1 gap-5 sm:columns-2 sm:gap-8 md:columns-3 lg:columns-4 [&>img:not(:first-child)]:mt-8"

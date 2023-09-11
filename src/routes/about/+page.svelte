@@ -1,6 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import NavCover from '$lib/NavCover.svelte';
+	
 
 	let data = [];
 	let highlightedMemberId = null;
@@ -34,7 +35,7 @@
 </script>
 
 <link href="https://fonts.googleapis.com/css?family=Inter" rel="stylesheet" />
-
+<NavCover />
 <div class="aboutBar">
 	<div class="aboutBox">
 		{#if aboutIndex === 0}

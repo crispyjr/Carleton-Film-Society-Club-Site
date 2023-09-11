@@ -1,6 +1,7 @@
 <script>
-    import {slide} from 'svelte/transition'
-    import Collapse from './collapse.svelte'
+    import {slide} from 'svelte/transition';
+    import Collapse from './collapse.svelte';
+    import NavCover from '$lib/NavCover.svelte';
 let collapseButton = '˅';
 let visible=true;
 const toggleCollapse = () => {
@@ -16,9 +17,7 @@ const toggleCollapse = () => {
 
 }
 </script>
-
-
-<div class="navCover"></div>
+<NavCover />
 <div class="eventsTitleBar">
     <div class="eventsTitle">EVENTS</div>
 </div>
@@ -108,15 +107,6 @@ const toggleCollapse = () => {
 
 
 <style>
-
-    .navCover{
-        width:100%;
-        height:100px;
-        background: rgb(165, 165, 165);
-        opacity: 0.2;
-        position: relative;
-        box-shadow: 0px 2px 10px red;
-    }
     .eventsTitleBar{
         width:100%;
         height:150px;
