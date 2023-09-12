@@ -1,30 +1,18 @@
 <script>
     import {slide} from 'svelte/transition'
     import Collapse from './collapse.svelte'
-let collapseButton = '˅';
-let visible=true;
-const toggleCollapse = () => {
-    visible = !visible;
-    if(visible==true){
-        collapseButton='˅'
-    }
-    else{
-        collapseButton = '^';
-    }
-    
-    
+    import Modal from './Modal.svelte'
+    import EventBox from '../EventBox.svelte';
+    let showModal = false;
+    import image7 from '$lib/assets/event_template.png';
 
-}
+
+
+
 </script>
 <div class="navCover"></div>
-<div class="modal">
-    <div class="modalBox">
-        <!-- <div class="time">12:00PM - 12:00PM</div> -->
-        <div class="category">SCREENING</div>
-        <div class="title">EVERYTHING EVERYWHERE ALL AT ONCE</div>
-        <div class="description">The first session involves going through an intro to film/filmmaking, a film-themed Kahoot, ice breaker activities, and a brainstorming session to start thinking of short film ideas you'd like to work on this semester</div>
-    </div>
-</div>
+
+<Modal bind:showModal />
 <div class="eventsTitleBar">
     <div class="eventsTitle">EVENTS</div>
 </div>
@@ -34,23 +22,12 @@ const toggleCollapse = () => {
     <div> 
         <div class="eventMonthBox">
             <div class="showEventsListBar">
-                <div class="eventBox">
-                    <div class="eventBoxTextBarTop">
-                        <p>Kung Fu Panda</p>
-                        <p>Screening</p>
-                    </div>
-                    <div class="eventBoxTextBarBottom">
-                        <p>NICOL BUILDING ROOM 210</p>
-                        <p> 4:00PM - 7:00PM</p>
-                    </div>
-                </div>
-                <div class="eventBox"></div>
-                <div class="eventBox"></div>
-                <div class="eventBox"></div>
-                <div class="eventBox"></div>
-                <div class="eventBox"></div>
-                <div class="eventBox"></div>
-                <div class="eventBox"></div>
+                <EventBox bind:showModal/>
+                <EventBox bind:showModal/>
+                <EventBox bind:showModal/>
+                <EventBox bind:showModal/>
+                <EventBox bind:showModal/>
+                
             </div>
         </div>
         
@@ -60,23 +37,11 @@ const toggleCollapse = () => {
     <div> 
         <div class="eventMonthBox" >
             <div class="showEventsListBar">
-                <div class="eventBox">
-                    <div class="eventBoxTextBarTop">
-                        <p>Kung Fu Panda</p>
-                        <p>Screening</p>
-                    </div>
-                    <div class="eventBoxTextBarBottom">
-                        <p>NICOL BUILDING ROOM 210</p>
-                        <p> 4:00PM - 7:00PM</p>
-                    </div>
-                </div>
-                <div class="eventBox"></div>
-                <div class="eventBox"></div>
-                <div class="eventBox"></div>
-                <div class="eventBox"></div>
-                <div class="eventBox"></div>
-                <div class="eventBox"></div>
-                <div class="eventBox"></div>
+                <EventBox bind:showModal/>
+                <EventBox bind:showModal/>
+                <EventBox bind:showModal/>
+                <EventBox bind:showModal/>
+                
             </div>
         </div>
         
@@ -228,18 +193,22 @@ const toggleCollapse = () => {
 .modalBox{
     background: #D9D9D9;
     position: relative;
-    width:40%;
+    width:39%;
     height:70%;
     border-radius: 20px;
 }
-.time{
-    background: red;
+.close{
     position:absolute;
-    right:10px;
-    font-size: 40px;
-    font-family: 'Koulen';
+    right:20px;
+    top:-10px;
+    font-size: 50px;
     text-align: right;
+    cursor: pointer;
 }
+.close:hover{
+    color: red;
+}
+
 .category{
     height:120px;
     position: absolute;
@@ -261,12 +230,25 @@ const toggleCollapse = () => {
 
 .description{
     height:300px;
-    width:93%;
+    width:95%;
     position:absolute;
     top:220px;
     left:30px;
     font-family: 'Koulen';
     font-size: 25px;
+
+}
+.location, .time{
+    position:absolute;
+    bottom:0;
+    right:15px;
+    font-family: 'Koulen';
+    font-size: 30px;
+    text-decoration: underline;
+}
+.time{
+    left:20px;
+    text-decoration: none;
 
 }
 </style>
