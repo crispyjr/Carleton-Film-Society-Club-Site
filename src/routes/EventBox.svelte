@@ -1,15 +1,17 @@
 <script>
     import image7 from '$lib/assets/event_template.png';
     export let showModal;
+    // export let title;
+    // export let category;
+    // export let location;
+    // export let time;
 </script>
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <div class="eventBox" on:click={() => (showModal = true)}>
     <img src={image7} alt="" class="eventBoxImg" />
-
-    <div class="eventBoxTextBarTop">
-        bruhh
-        everything everything
-        
+    <div class="eventBoxTextBarTop">Screening</div>
+    <div class="eventBoxTextBarMiddle">
+        kung fu panda
     </div>
     <div class="eventBoxTextBarBottom">
         <p>NICOL BUILDING ROOM 210</p>
@@ -33,26 +35,30 @@
     filter: blur(8px);
   -webkit-filter: blur(8px)
 }
-.eventBoxTextBarTop, .eventBoxTextBarBottom{
+.eventBoxTextBarTop, .eventBoxTextBarMiddle, .eventBoxTextBarBottom{
     width:100%;
-    position: relative;
+    position: absolute;
     text-align: center;
     font-family: 'Koulen';
     
     color:white;
 }
-.eventBoxTextBarTop{
-    top:0%;
+.eventBoxTextBarMiddle{
+    top:40%;
     font-size: 40px;
-    height: 400px;
-    background: red;
+    height: 200px;
+    line-height: 1;
+    
+ 
+}
+.eventBoxTextBarTop{
+    font-size: 60px;
 }
 .eventBoxTextBarBottom{
     bottom: 0;
     font-size: 30px;
     line-height: 1;
     height:70px;
-    background: blue;
 
 }
 </style>

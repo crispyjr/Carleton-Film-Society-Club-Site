@@ -5,10 +5,24 @@ export let showModal;
 // export let description;
 // export let location;
 // export let time;
+import { slide } from 'svelte/transition';
+	
+	let visible = true;
+
+	function fadeSlide(node, options) {
+		const slideTrans = slide(node, options)
+		return {
+			duration: options.duration,
+			css: t => `
+				${slideTrans.css(t)}
+				opacity: ${t};
+			`
+		};
+	}
 </script>
 {#if showModal}
 <div class="modal">
-    <div class="modalBox">
+    <div class="modalBox" in:fadeSlide="{{duration: 600}}">
         <div class="close" on:click={() => (showModal = false)}>x</div>
         <div class="category">SCREENING</div>
         <div class="title">EVERYTHING EVERYWHERE ALL AT ONCE</div>
