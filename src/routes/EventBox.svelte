@@ -7,7 +7,7 @@
      export let time;
 </script>
 <!-- svelte-ignore a11y-click-events-have-key-events -->
-<div class="eventBox">
+<div class="eventBox" on:click={() => (showModal = true)}>
     <img src={image7} alt="" class="eventBoxImg" />
     <div class="eventBoxTextBarTop">{category}</div>
     <div class="eventBoxTextBarMiddle">
