@@ -1,24 +1,44 @@
 <script>
+	import { send, receive } from '$lib/crossfade.js';
 	import { onMount } from 'svelte';
-	import NavCover from '$lib/NavCover.svelte';
-	
 
+	import NavCover from '$lib/NavCover.svelte';
+
+	// Needed
 	let data = [];
 	let highlightedMemberId = null;
+	let cycleTimeout;
 	let aboutIndex = 0;
 	let aboutDescriptionText =
 		'We’re a passionate community of movie enthusiasts celebrating the art of filmmaking. We’re dedicated to empowering the Carleton community by providing a platform for knowledge-sharing, learning opportunities, and accessible resources to help individuals express and share their unique stories. Collaborate on film projects, enhance your filmmaking skill through workshops and guest speaker presentations, and showcase your short films in our student-led festival.';
 
-	onMount(fetchData);
+	onMount(() => {
+		fetchData().then(() => autoCycle());
+	});
 
-	async function fetchData() {
+	const fetchData = async () => {
 		try {
 			const response = await fetch('http://localhost:8080/get/members');
 			data = await response.json();
-		} catch (error) {
-			console.error('Error fetching data:', error);
-		}
-	}
+		} catch (error) {}
+	};
+
+	const autoCycle = () => {
+		cycleTimeout = setTimeout(() => {
+			if (aboutIndex < data.length) {
+				aboutIndex++;
+			} else {
+				aboutIndex = 0;
+			}
+			highlightedMemberId = aboutIndex > 0 ? data[aboutIndex - 1].id : null;
+			console.log(highlightedMemberId);
+			autoCycle();
+		}, 3000);
+	};
+
+	const pauseCycle = () => {
+		clearTimeout(cycleTimeout);
+	};
 
 	const showMember = (id) => {
 		highlightedMemberId = id;
@@ -33,32 +53,29 @@
 		aboutIndex = 0;
 	};
 </script>
-
-<link href="https://fonts.googleapis.com/css?family=Inter" rel="stylesheet" />
 <NavCover />
+
 <div class="aboutBar">
 	<div class="aboutBox">
-		{#if aboutIndex === 0}
-			<div class="aboutBox2 fade">
-				<div class="aboutTitle">ABOUT US</div>
-				<div class="aboutDescription">{aboutDescriptionText}</div>
-			</div>
-		{:else}
-			<div class="portraitBox fade">
-				<div class="imageBox">
-					<img
-						class="portraitImage"
-						src="data:image/png;base64,{data[aboutIndex - 1].image}"
-						alt=""
-					/>
+		{#each aboutIndex === 0 ? [{ type: 'about', description: aboutDescriptionText }] : [data[aboutIndex - 1]] as item (item.type || item.id)}
+			{#if item.type === 'about'}
+				<div class="aboutBox2 fade" out:send in:receive>
+					<div class="aboutTitle">ABOUT US</div>
+					<div class="aboutDescription">{item.description}</div>
 				</div>
-				<div class="portraitTextBar">
-					<div class="portraitName">{data[aboutIndex - 1].name}</div>
-					<div class="portraitPosition">{data[aboutIndex - 1].title}</div>
-					<div class="portraitMail">{data[aboutIndex - 1].email}</div>
+			{:else}
+				<div class="portraitBox" out:send in:receive>
+					<div class="imageBox">
+						<img class="portraitImage fade" src="data:image/png;base64,{item.image}" alt="" />
+					</div>
+					<div class="portraitTextBar fade">
+						<div class="portraitName">{item.name}</div>
+						<div class="portraitPosition">{item.title}</div>
+						<div class="portraitMail">{item.email}</div>
+					</div>
 				</div>
-			</div>
-		{/if}
+			{/if}
+		{/each}
 	</div>
 </div>
 
@@ -68,12 +85,25 @@
 		<div class="w-full h-4/5 relative">
 			{#each data as member (member.id)}
 				<div
-					class={`flex justify-between items-center ${highlightedMemberId === member.id ? 'text-yellow-400' : ''}`}
-					on:mouseenter={() => showMember(member.id)}
-					on:mouseleave={resetView}
+					class="flex justify-between items-center hoverHighlight"
+					class:highlight={highlightedMemberId === member.id}
+					on:mouseenter={() => {
+						pauseCycle();
+						showMember(member.id);
+					}}
+					on:mouseleave={() => {
+						resetView();
+						autoCycle();
+					}}
 				>
-					<div class="h-9 w-1/2 text-white text-2xl cursor-pointer text-right pr-4">{member.name}</div>
-					<div class="h-9 w-1/2 text-white text-2xl cursor-pointer text-left pl-4">{member.title}</div>
+					<div class="h-9 w-1/2 text-white text-2xl cursor-pointer text-right pr-4">
+						{member.name}
+					</div>
+					<div
+						class="h-9 w-1/2 text-white text-2xl cursor-pointer text-left pl-4 font-bold uppercase"
+					>
+						{member.title}
+					</div>
 				</div>
 			{/each}
 		</div>
@@ -81,6 +111,25 @@
 </div>
 
 <style>
+	.hoverHighlight:hover {
+		background-color: rgba(
+			255,
+			255,
+			255,
+			0.1
+		); /* This will give a light white overlay, you can adjust as per your design */
+		transition: background-color 0.3s; /* Smooth transition */
+	}
+
+	.highlight {
+		background-color: rgba(
+			255,
+			255,
+			255,
+			0.1
+		); /* This will give a light white overlay, you can adjust as per your design */
+		transition: background-color 0.3s; /* Smooth transition */
+	}
 
 	.aboutBar {
 		width: 100%;
