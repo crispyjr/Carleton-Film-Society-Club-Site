@@ -1,21 +1,21 @@
 <script>
     import image7 from '$lib/assets/event_template.png';
     export let showModal;
-    // export let title;
-    // export let category;
-    // export let location;
-    // export let time;
+     export let title;
+     export let category;
+     export let location;
+     export let time;
 </script>
 <!-- svelte-ignore a11y-click-events-have-key-events -->
-<div class="eventBox" on:click={() => (showModal = true)}>
+<div class="eventBox">
     <img src={image7} alt="" class="eventBoxImg" />
-    <div class="eventBoxTextBarTop">Screening</div>
+    <div class="eventBoxTextBarTop">{category}</div>
     <div class="eventBoxTextBarMiddle">
-        kung fu panda
+        {title}
     </div>
     <div class="eventBoxTextBarBottom">
-        <p>NICOL BUILDING ROOM 210</p>
-        <p> 4:00PM - 7:00PM</p>
+        <p>{location}</p>
+        <p> {time}</p>
     </div>
 </div>
 <style>

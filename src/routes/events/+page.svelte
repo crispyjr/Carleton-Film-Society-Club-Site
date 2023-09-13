@@ -1,18 +1,39 @@
 <script>
     import {slide} from 'svelte/transition'
+    import { onMount } from 'svelte';
     import Collapse from './collapse.svelte'
     import Modal from './Modal.svelte'
     import EventBox from '../EventBox.svelte';
     let showModal = false;
     import image7 from '$lib/assets/event_template.png';
+    let title;
+    let category;
+    let location;
+    let time;
+    let data = [];
+    
+    function test(item){
+        showModal = true;
+        console.log(item);
+    }
 
+	onMount(fetchData);
+
+	async function fetchData() {
+		try {
+			const response = await fetch('http://localhost:8080/get/events');
+			data = await response.json();
+		} catch (error) {
+			console.error('Error fetching data:', error);
+		}
+	}
 
 
 
 </script>
 <div class="navCover"></div>
 
-<Modal bind:showModal />
+<Modal bind:showModal bind:title bind:category bind:location bind:time />
 <div class="eventsTitleBar">
     <div class="eventsTitle">EVENTS</div>
 </div>
@@ -22,11 +43,13 @@
     <div> 
         <div class="eventMonthBox">
             <div class="showEventsListBar">
+                {#each data as item}
+                <EventBox bind:showModal on:click={() => {test(item)}}/>
+                <!-- <EventBox bind:showModal/>
                 <EventBox bind:showModal/>
                 <EventBox bind:showModal/>
-                <EventBox bind:showModal/>
-                <EventBox bind:showModal/>
-                <EventBox bind:showModal/>
+                <EventBox bind:showModal/> -->
+                {/each}
                 
             </div>
         </div>
@@ -37,7 +60,7 @@
     <div> 
         <div class="eventMonthBox" >
             <div class="showEventsListBar">
-                <EventBox bind:showModal/>
+                <EventBox bind:title bind:category bind:location bind:time bind:showModal on/>
                 <EventBox bind:showModal/>
                 <EventBox bind:showModal/>
                 <EventBox bind:showModal/>

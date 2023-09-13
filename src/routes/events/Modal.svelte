@@ -1,10 +1,10 @@
 <script>
 export let showModal;
-// export let category;
-// export let title;
-// export let description;
-// export let location;
-// export let time;
+export let category;
+export let title;
+export let description;
+export let location;
+export let time;
 import { slide } from 'svelte/transition';
 	
 	let visible = true;
@@ -24,7 +24,7 @@ import { slide } from 'svelte/transition';
 <div class="modal">
     <div class="modalBox" in:fadeSlide="{{duration: 600}}">
         <div class="close" on:click={() => (showModal = false)}>x</div>
-        <div class="category">SCREENING</div>
+        <div class="category">{category}</div>
         <div class="title">EVERYTHING EVERYWHERE ALL AT ONCE</div>
         <div class="description">The first session involves going through an intro to film/filmmaking, a film-themed Kahoot, ice breaker activities, and a brainstorming session to start thinking of short film ideas you'd like to work on this semester</div>
         <a class="location" href="/">NICOL BUILDING ROOM 210</a>
