@@ -5,17 +5,23 @@
      export let category;
      export let location;
      export let time;
+     export let item;
+
+     function test(item){
+        showModal = true;
+    }
 </script>
 <!-- svelte-ignore a11y-click-events-have-key-events -->
-<div class="eventBox" on:click={() => (showModal = true)}>
-    <img src={image7} alt="" class="eventBoxImg" />
-    <div class="eventBoxTextBarTop">{category}</div>
+<div class="eventBox" on:click={test(item)}>
+    <!-- <img src={item?.cover} alt="" class="eventBoxImg" /> -->
+    <img src="data:image/png;base64,{item?.cover}" class="eventBoxImg" alt={item?.name} />
+    <div class="eventBoxTextBarTop">{item?.category}</div>
     <div class="eventBoxTextBarMiddle">
-        {title}
+        {item?.name}
     </div>
     <div class="eventBoxTextBarBottom">
-        <p>{location}</p>
-        <p> {time}</p>
+        <p>{item?.location}</p>
+        <p> {item?.start_time}</p>
     </div>
 </div>
 <style>

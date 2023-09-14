@@ -1,112 +1,124 @@
 <script>
-export let showModal;
-export let category;
-export let title;
-export let description;
-export let location;
-export let time;
-import { slide } from 'svelte/transition';
-	
+	import { slide } from 'svelte/transition';
+	import { selectedItem } from '$lib/stores/store.js';
+    import { onMount } from 'svelte';
+
+	export let showModal;
+	export let category;
+	export let title;
+	export let description;
+	export let location;
+	export let time;
+
 	let visible = true;
+	let modalProps = {};
 
 	function fadeSlide(node, options) {
-		const slideTrans = slide(node, options)
+		const slideTrans = slide(node, options);
 		return {
 			duration: options.duration,
-			css: t => `
+			css: (t) => `
 				${slideTrans.css(t)}
 				opacity: ${t};
 			`
 		};
 	}
+
+    $: if (showModal) {
+        selectedItem.subscribe((value) => {
+			modalProps = value;  
+		});
+        console.log("get ayaya'd nerd");
+        // Todo: fix events db to also include category, then start
+        // adding a bunch of events. also make a sveltekit function
+        // to convert the time to something readable.
+	}
 </script>
+
 {#if showModal}
-<div class="modal">
-    <div class="modalBox" in:fadeSlide="{{duration: 600}}">
-        <div class="close" on:click={() => (showModal = false)}>x</div>
-        <div class="category">{category}</div>
-        <div class="title">EVERYTHING EVERYWHERE ALL AT ONCE</div>
-        <div class="description">The first session involves going through an intro to film/filmmaking, a film-themed Kahoot, ice breaker activities, and a brainstorming session to start thinking of short film ideas you'd like to work on this semester</div>
-        <a class="location" href="/">NICOL BUILDING ROOM 210</a>
-        <div class="time">12:00PM - 12:00PM</div>
-    </div>
-</div>
+	<div class="modal">
+		<div class="modalBox" in:fadeSlide={{ duration: 600 }}>
+			<div class="close" on:click={() => {showModal = false}}>x</div>
+			<div class="category">{modalProps?.category}</div>
+			<div class="title">{modalProps?.name}</div>
+			<div class="description">{modalProps?.description}</div>
+			<a class="location" href="/">{modalProps?.location}</a>
+			<div class="time">{modalProps?.start_time}</div>
+		</div>
+	</div>
 {/if}
 
-
 <style>
-    /**MODAL*/
-/* The Modal (background) */
-.modal {
-    background-color: rgba(0, 0, 0, 0.582);
-  position: fixed;
-  width:100%; 
-  height:100%;
-  padding-top: 100px;
-  z-index: 2;
-  display: flex;
-  justify-content: center;
-}
+	/**MODAL*/
+	/* The Modal (background) */
+	.modal {
+		background-color: rgba(0, 0, 0, 0.582);
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		padding-top: 100px;
+		z-index: 2;
+		display: flex;
+		justify-content: center;
+	}
 
-.modalBox{
-    background: #D9D9D9;
-    position: relative;
-    width:39%;
-    height:70%;
-    border-radius: 20px;
-}
-.close{
-    position:absolute;
-    right:20px;
-    top:-10px;
-    font-size: 50px;
-    text-align: right;
-    cursor: pointer;
-}
-.close:hover{
-    color: red;
-}
+	.modalBox {
+		background: #d9d9d9;
+		position: relative;
+		width: 39%;
+		height: 70%;
+		border-radius: 20px;
+	}
+	.close {
+		position: absolute;
+		right: 20px;
+		top: -10px;
+		font-size: 50px;
+		text-align: right;
+		cursor: pointer;
+	}
+	.close:hover {
+		color: red;
+	}
 
-.category{
-    height:120px;
-    position: absolute;
-    left:30px;
-    top:10px;
-    font-family: 'Koulen';
-    font-size: 96px;
-    border-bottom: 5px solid black;
-}
-.title{
-    height:100px;
-    position:absolute;
-    top:125px;
-    left:30px;
-    font-family: 'Koulen';
-    font-size: 40px;
+	.category {
+		height: 120px;
+		position: absolute;
+		left: 30px;
+		top: 10px;
+		font-family: 'Koulen';
+		font-size: 96px;
+		border-bottom: 5px solid black;
+	}
+	.title {
+		height: 100px;
+		position: absolute;
+		top: 125px;
+		left: 30px;
+		font-family: 'Koulen';
+		font-size: 40px;
+	}
 
-}
-
-.description{
-    height:300px;
-    width:95%;
-    position:absolute;
-    top:220px;
-    left:30px;
-    font-family: 'Koulen';
-    font-size: 25px;
-
-}
-.location, .time{
-    position:absolute;
-    bottom:0;
-    right:15px;
-    font-family: 'Koulen';
-    font-size: 30px;
-    text-decoration: underline;
-}
-.time{
-    left:20px;
-    text-decoration: none;
-
-}
+	.description {
+		height: 300px;
+		width: 95%;
+		position: absolute;
+		top: 220px;
+		left: 30px;
+		font-family: 'Koulen';
+		font-size: 25px;
+	}
+	.location,
+	.time {
+		position: absolute;
+		bottom: 0;
+		right: 15px;
+		font-family: 'Koulen';
+		font-size: 30px;
+		text-decoration: underline;
+	}
+	.time {
+		left: 20px;
+		text-decoration: none;
+	}
 </style>
