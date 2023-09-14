@@ -12,7 +12,7 @@
 	let location;
 	let time;
 	let data = [];
-	let modalData;
+	let groupedData;
 
 	onMount(fetchData);
 
@@ -20,9 +20,49 @@
 		try {
 			const response = await fetch('http://localhost:8080/get/events');
 			data = await response.json();
+
+			// Sort data by start_time
+			data.sort((a, b) => new Date(a.start_time) - new Date(b.start_time));
+			groupedData = groupByMonthYear(data);
 		} catch (error) {
 			console.error('Error fetching data:', error);
 		}
+	}
+
+	// Function to group data by month-year
+	function groupByMonthYear(data) {
+		const grouped = {};
+		data.forEach((event) => {
+			const date = new Date(event.start_time);
+			const monthYearKey = `${date.getMonth()}-${date.getFullYear()}`;
+			if (!grouped[monthYearKey]) {
+				grouped[monthYearKey] = [];
+			}
+			grouped[monthYearKey].push(event);
+		});
+		return grouped;
+	}
+
+	
+
+	const monthNames = [
+		'January',
+		'February',
+		'March',
+		'April',
+		'May',
+		'June',
+		'July',
+		'August',
+		'September',
+		'October',
+		'November',
+		'December'
+	];
+
+	function getMonthYear(key) {
+		const [month, year] = key.split('-');
+		return `${monthNames[parseInt(month)]} ${year}`;
 	}
 
 	function test(item) {
@@ -38,8 +78,27 @@
 
 <Modal bind:showModal />
 
+{#if groupedData}
+{#each Object.keys(groupedData) as key}
+    <Collapse month={getMonthYear(key)}>
+        <div>
+            <div class="eventMonthBox">
+                <div class="showEventsListBar">
+                    {#each groupedData[key] as item (item.id)}
+                        <span on:click={() => test(item)}>
+                            <EventBox bind:showModal={showModal} bind:item={item} />
+						</span>
+                    {/each}
+                </div>
+            </div>
+        </div>
+    </Collapse>
+{/each}
+{/if}
+
+
 <!-- just to keep the month organized -->
-<Collapse month="september 2023">
+<!-- <Collapse month="september 2023">
 	<div>
 		<div class="eventMonthBox">
 			<div class="showEventsListBar">
@@ -63,37 +122,7 @@
 			</div>
 		</div>
 	</div>
-</Collapse>
-
-<!-- <div> 
-    <div class="eventMonthTitleBar">
-        <p class="eventMonthTitle">SEPTEMBER 2023 </p>
-        <div class="collapseButtonBox " on:click={toggleCollapse}><p class="collapseText">{collapseButton}</p></div>
-    </div>
-    {#if visible}
-    <div class="eventMonthBox" transition:slide>
-        <div class="showEventsListBar">
-            <div class="eventBox">
-                <div class="eventBoxTextBarTop">
-                    <p>Kung Fu Panda</p>
-                    <p>Screening</p>
-                </div>
-                <div class="eventBoxTextBarBottom">
-                    <p>NICOL BUILDING ROOM 210</p>
-                    <p> 4:00PM - 7:00PM</p>
-                </div>
-            </div>
-            <div class="eventBox"></div>
-            <div class="eventBox"></div>
-            <div class="eventBox"></div>
-            <div class="eventBox"></div>
-            <div class="eventBox"></div>
-            <div class="eventBox"></div>
-            <div class="eventBox"></div>
-        </div>
-    </div>
-    {/if}
-</div> -->
+</Collapse> -->
 
 <style>
 	.navCover {
@@ -138,7 +167,8 @@
 		/* justify-content: space-around;
     align-items: center;
     flex: 1; */
-		overflow-x: auto;
+		display: inline-block;
+		overflow: auto;
 		white-space: nowrap;
 	}
 	.showEventsListBar::-webkit-scrollbar {

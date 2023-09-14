@@ -32,7 +32,7 @@
     position:relative;
     display: inline-block;
     margin:20px 0px 10px 30px;
-    white-space: normal;
+    white-space: no-wrap;
 }
 .eventBoxImg{
     width:100%;
