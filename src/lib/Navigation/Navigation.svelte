@@ -1,8 +1,10 @@
 <script>
 	// import logo from '$lib/assets/CFS_logo.png';
-	import icon from '$lib/assets/raven3.png';
+	// import icon from '$lib/assets/ravenLogo_white.png';
 	import { Hamburger } from 'svelte-hamburgers';
 	import Menu from './menu.svelte';
+
+	export let icon;
 
 	let isActive = false;
 
