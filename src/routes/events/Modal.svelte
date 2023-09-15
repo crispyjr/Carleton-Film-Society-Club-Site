@@ -56,7 +56,7 @@
 		position: fixed;
 		width: 100%;
 		height: 100%;
-		padding-top: 100px;
+		padding-top:100px;
 		z-index: 2;
 		display: flex;
 		justify-content: center;
