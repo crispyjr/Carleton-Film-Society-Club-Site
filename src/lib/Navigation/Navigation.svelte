@@ -94,6 +94,7 @@
 		font-size: 30px;
 		font-family: 'Koulen';
 		z-index: 2;
+		color: black;
 	}
 
 	/**SCREEN WIDTH*/
