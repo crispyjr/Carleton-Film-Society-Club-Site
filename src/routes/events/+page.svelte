@@ -3,6 +3,7 @@
 	import { onMount } from 'svelte';
 
 	import { selectedItem } from '$lib/stores/store.js';
+	import NavCover from '$lib/NavCover.svelte';
 	import Collapse from './collapse.svelte';
 	import Modal from './Modal.svelte';
 	import EventBox from '../EventBox.svelte';
@@ -70,13 +71,13 @@
 	}
 </script>
 
-<div class="navCover" />
-
+<NavCover />
+<Modal bind:showModal />
 <div class="eventsTitleBar">
 	<div class="eventsTitle">EVENTS</div>
 </div>
 
-<Modal bind:showModal />
+
 
 {#if groupedData}
 {#each Object.keys(groupedData) as key}
