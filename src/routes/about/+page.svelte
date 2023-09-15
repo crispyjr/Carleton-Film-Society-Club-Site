@@ -53,6 +53,9 @@
 		aboutIndex = 0;
 	};
 </script>
+
+
+
 <NavCover />
 
 <div class="aboutBar">
