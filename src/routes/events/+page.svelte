@@ -5,8 +5,8 @@
 	import { selectedItem } from '$lib/stores/store.js';
 	import NavCover from '$lib/NavCover.svelte';
 	import Collapse from './collapse.svelte';
-	import Modal from './Modal.svelte';
-	import EventBox from '../EventBox.svelte';
+	import Modal from '$lib/Modal.svelte';
+	import EventBox from '$lib/EventBox.svelte';
 	let showModal = false;
 	let title;
 	let category;

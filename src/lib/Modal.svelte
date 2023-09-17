@@ -1,7 +1,7 @@
 <script>
 	import { slide } from 'svelte/transition';
 	import { selectedItem } from '$lib/stores/store.js';
-    import { onMount } from 'svelte';
+	import { convertDate } from '$lib/globalFunctions.js';
 
 	export let showModal;
 	export let category;
@@ -28,7 +28,7 @@
         selectedItem.subscribe((value) => {
 			modalProps = value;  
 		});
-        console.log("get ayaya'd nerd");
+
         // Todo: fix events db to also include category, then start
         // adding a bunch of events. also make a sveltekit function
         // to convert the time to something readable.
@@ -43,7 +43,7 @@
 			<div class="title">{modalProps?.name}</div>
 			<div class="description">{modalProps?.description}</div>
 			<a class="location" href="/">{modalProps?.location}</a>
-			<div class="time">{modalProps?.start_time}</div>
+			<div class="time">{convertDate(modalProps?.start_time)}</div>
 		</div>
 	</div>
 {/if}
@@ -65,7 +65,7 @@
 	.modalBox {
 		background: #d9d9d9;
 		position: relative;
-		width: 39%;
+		width: 45%;
 		height: 70%;
 		border-radius: 20px;
 	}

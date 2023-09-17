@@ -1,5 +1,6 @@
 <script>
     import image7 from '$lib/assets/event_template.png';
+    import { convertDate } from '$lib/globalFunctions.js';
     export let showModal;
      export let title;
      export let category;
@@ -21,7 +22,7 @@
     </div>
     <div class="eventBoxTextBarBottom">
         <p>{item?.location}</p>
-        <p> {item?.start_time}</p>
+        <p> {convertDate(item?.start_time)}</p>
     </div>
 </div>
 <style>
@@ -62,9 +63,9 @@
 }
 .eventBoxTextBarBottom{
     bottom: 0;
-    font-size: 30px;
+    font-size: 25px;
     line-height: 1;
-    height:70px;
+    height:65px;
 
 }
 </style>

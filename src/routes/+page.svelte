@@ -1,11 +1,32 @@
 <script>
-	import image1 from '$lib/assets/stock2.jpg';
+	import { onMount } from 'svelte';
+
+	import Modal from '$lib/Modal.svelte';
+	import EventBox from '$lib/EventBox.svelte';
+	import { selectedItem } from '$lib/stores/store.js';
 	import { images } from '$lib/imageData.js';
 
-	import image7 from '$lib/assets/event_template.png';
-
 	let imageShowIndex = 0;
-	$: console.log(imageShowIndex);
+	let showModal = false;
+	let data = [];
+
+	onMount(fetchData);
+
+	async function fetchData() {
+		try {
+			const response = await fetch('http://localhost:8080/get/events');
+			data = await response.json();
+
+			// Sort data by start_time
+			data.sort((a, b) => new Date(a.start_time) - new Date(b.start_time));
+		} catch (error) {
+			console.error('Error fetching data:', error);
+		}
+	}
+
+	function test(item) {
+		selectedItem.set(item);
+	}
 
 	const prevSlide = () => {
 		if (imageShowIndex == 0) {
@@ -39,6 +60,7 @@
 </script>
 
 <link href="https://fonts.googleapis.com/css?family=Koulen" rel="stylesheet" />
+<Modal bind:showModal />
 <div class="slideshow">
 	{#each images as { id, imgurl }}
 		<img
@@ -61,51 +83,13 @@
 </div>
 <div class="events">
 	<div class="upcomingEventsBar text">UPCOMING EVENTS</div>
+
 	<div class="showEventsListBar">
-		<div class="eventBox">
-			<img src={image7} alt="" class="eventBoxImg" />
-			<div class="eventBoxTextBarTop">
-				<p>Kung Fu Panda</p>
-				<p>Screening</p>
-			</div>
-			<div class="eventBoxTextBarBottom">
-				<p>NICOL BUILDING ROOM 210</p>
-				<p>4:00PM - 7:00PM</p>
-			</div>
-		</div>
-		<div class="eventBox">
-			<img src={image7} alt="" class="eventBoxImg" />
-			<div class="eventBoxTextBarTop">
-				<p>Kung Fu Panda</p>
-				<p>Screening</p>
-			</div>
-			<div class="eventBoxTextBarBottom">
-				<p>NICOL BUILDING ROOM 210</p>
-				<p>4:00PM - 7:00PM</p>
-			</div>
-		</div>
-		<div class="eventBox">
-			<img src={image7} alt="" class="eventBoxImg" />
-			<div class="eventBoxTextBarTop">
-				<p>Kung Fu Panda</p>
-				<p>Screening</p>
-			</div>
-			<div class="eventBoxTextBarBottom">
-				<p>NICOL BUILDING ROOM 210</p>
-				<p>4:00PM - 7:00PM</p>
-			</div>
-		</div>
-		<div class="eventBox">
-			<img src={image7} alt="" class="eventBoxImg" />
-			<div class="eventBoxTextBarTop">
-				<p>Kung Fu Panda</p>
-				<p>Screening</p>
-			</div>
-			<div class="eventBoxTextBarBottom">
-				<p>NICOL BUILDING ROOM 210</p>
-				<p>4:00PM - 7:00PM</p>
-			</div>
-		</div>
+		{#each data.slice(0, 4) as item (item.id)}
+		<span on:click={() => test(item)}>
+			<EventBox bind:showModal={showModal} bind:item={item} />
+		</span>
+		{/each}
 	</div>
 	<a href="/events">
 		<div class="seeMoreBar">SEE MORE</div>
@@ -113,7 +97,7 @@
 </div>
 
 <style>
-	/* SLIDESHOW */
+	/* SLIDESHOW */	
 	.slideshow {
 		width: 100%;
 		height: 700px;

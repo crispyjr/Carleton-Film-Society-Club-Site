@@ -1,7 +1,7 @@
 <style>
     .custom {
       height: 100px;
-      background: rgb(255, 255, 255);
+      background: rgb(120, 120, 120);
       box-shadow: 0px 2px 10px red;
     }
   </style>
