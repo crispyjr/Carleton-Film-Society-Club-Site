@@ -2,20 +2,20 @@
 	import { onMount } from 'svelte';
 	import NavCover from '$lib/NavCover.svelte';
 
-
 	let data = [];
 
 	onMount(fetchData);
 
 	async function fetchData() {
 		try {
-			const response = await fetch('http://localhost:8080/get/photos');
+			const response = await fetch('http://cfs-backend:8080/get/photos');
 			data = await response.json();
 		} catch (error) {
 			console.error('Error fetching data:', error);
 		}
 	}
 </script>
+
 <NavCover />
 <div class="p-5 sm:p-8">
 	<div

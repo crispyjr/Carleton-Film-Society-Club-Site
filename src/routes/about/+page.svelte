@@ -18,7 +18,7 @@
 
 	const fetchData = async () => {
 		try {
-			const response = await fetch('http://localhost:8080/get/members');
+			const response = await fetch('http://cfs-backend:8080/get/members');
 			data = await response.json();
 		} catch (error) {}
 	};
@@ -53,8 +53,6 @@
 		aboutIndex = 0;
 	};
 </script>
-
-
 
 <NavCover />
 

@@ -19,7 +19,7 @@
 
 	async function fetchData() {
 		try {
-			const response = await fetch('http://localhost:8080/get/events');
+			const response = await fetch('http://cfs-backend:8080/get/events');
 			data = await response.json();
 
 			// Sort data by start_time
@@ -43,8 +43,6 @@
 		});
 		return grouped;
 	}
-
-	
 
 	const monthNames = [
 		'January',
@@ -77,26 +75,23 @@
 	<div class="eventsTitle">EVENTS</div>
 </div>
 
-
-
 {#if groupedData}
-{#each Object.keys(groupedData) as key}
-    <Collapse month={getMonthYear(key)}>
-        <div>
-            <div class="eventMonthBox">
-                <div class="showEventsListBar">
-                    {#each groupedData[key] as item (item.id)}
-                        <span on:click={() => test(item)}>
-                            <EventBox bind:showModal={showModal} bind:item={item} />
-						</span>
-                    {/each}
-                </div>
-            </div>
-        </div>
-    </Collapse>
-{/each}
+	{#each Object.keys(groupedData) as key}
+		<Collapse month={getMonthYear(key)}>
+			<div>
+				<div class="eventMonthBox">
+					<div class="showEventsListBar">
+						{#each groupedData[key] as item (item.id)}
+							<span on:click={() => test(item)}>
+								<EventBox bind:showModal bind:item />
+							</span>
+						{/each}
+					</div>
+				</div>
+			</div>
+		</Collapse>
+	{/each}
 {/if}
-
 
 <!-- just to keep the month organized -->
 <!-- <Collapse month="september 2023">

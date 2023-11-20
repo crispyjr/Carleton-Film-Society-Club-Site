@@ -14,7 +14,7 @@
 
 	async function fetchData() {
 		try {
-			const response = await fetch('http://localhost:8080/get/events');
+			const response = await fetch('http://cfs-backend:8080/get/events');
 			data = await response.json();
 
 			// Sort data by start_time
@@ -86,9 +86,9 @@
 
 	<div class="showEventsListBar">
 		{#each data.slice(0, 4) as item (item.id)}
-		<span on:click={() => test(item)}>
-			<EventBox bind:showModal={showModal} bind:item={item} />
-		</span>
+			<span on:click={() => test(item)}>
+				<EventBox bind:showModal bind:item />
+			</span>
 		{/each}
 	</div>
 	<a href="/events">
@@ -97,7 +97,7 @@
 </div>
 
 <style>
-	/* SLIDESHOW */	
+	/* SLIDESHOW */
 	.slideshow {
 		width: 100%;
 		height: 700px;
